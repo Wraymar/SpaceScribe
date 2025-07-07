@@ -1,0 +1,21 @@
+#Base image
+FROM node:20
+
+# Create a directory for the server in the container
+# This is where the server code will live
+WORKDIR /app
+
+# Copy dependency metadata
+COPY package*.json ./
+
+# Install dependencies (this installs Express, Knex, pg, etc.)
+RUN npm install
+
+# Copy source code
+COPY . .
+
+# Expose backend port
+EXPOSE 8080
+
+# Start dev server
+CMD ["npm", "run", "dev"]
