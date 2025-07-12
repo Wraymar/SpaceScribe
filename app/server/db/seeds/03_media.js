@@ -6,7 +6,6 @@ exports.seed = async function (knex) {
   await knex("media").del();
   await knex("media").insert([
     {
-      id: 1,
       user_id: 1,
       journal_entry_id: 1,
       filename: "morning.jpg",
@@ -18,7 +17,6 @@ exports.seed = async function (knex) {
       caption: "Captured my view during meditation",
     },
     {
-      id: 2,
       user_id: 2,
       journal_entry_id: 2,
       filename: "sketch.png",
@@ -30,7 +28,6 @@ exports.seed = async function (knex) {
       caption: "One of today’s creative outputs",
     },
     {
-      id: 3,
       user_id: 3,
       journal_entry_id: 3,
       filename: "desk.png",

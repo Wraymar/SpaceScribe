@@ -4,10 +4,10 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("users", (table) => {
-    table.increments("id").primary();
+    table.specificType("id", "serial").primary();
     table.string("username").notNullable().unique();
     table.string("email").notNullable().unique();
-    table.string("password_hash").notNullable();
+    table.string("hashed_password").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());
   });

@@ -2,12 +2,14 @@
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
+const app = express();
 
 //Imports
 const logRoutes = require("./middleware/logRoutes");
 const { signup, login } = require("./controllers/auth_controllers");
 
 //MIDDLEWARE
+app.use(express.json());
 app.use(logRoutes);
 
 //ROUTES
@@ -18,8 +20,6 @@ app.post("/api/login", login);
 //EXPRESS STUFF
 //*************************************************************************** */
 app.get("/", (req, res) => res.send("Welcome to SpaceScribe, log In here"));
-
-const app = express();
 
 const port = process.env.PORT;
 
