@@ -6,7 +6,6 @@ exports.seed = async function (knex) {
   await knex("tasks").del();
   await knex("tasks").insert([
     {
-      id: 1,
       user_id: 1,
       title: "Meditate 10 minutes",
       description: "Start the day with a calm mind",
@@ -16,7 +15,6 @@ exports.seed = async function (knex) {
       completed_at: knex.fn.now(),
     },
     {
-      id: 2,
       user_id: 2,
       title: "Finish art class homework",
       description: "Upload final sketches before deadline",
@@ -25,7 +23,6 @@ exports.seed = async function (knex) {
       due_date: "2025-07-09",
     },
     {
-      id: 3,
       user_id: 3,
       title: "Declutter workspace",
       description: "Organize desk and supplies",

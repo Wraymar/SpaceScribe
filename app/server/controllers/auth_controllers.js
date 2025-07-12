@@ -1,19 +1,27 @@
 const jwt = require("jsonwebtoken");
-const { createUser, findUserByEmail } = require("../models/user");
-const { hashPassword, comparePasswords } = require("../utils/hash");
+const User = require("../models/user_model");
+const {
+  hashPassword,
+  comparePasswords,
+} = require("../utilities/passwordHasher");
 
 const signup = async (req, res) => {
+  console.log(req.body);
   try {
     const { username, email, password } = req.body;
-    const existingUser = await findUserByEmail(email);
+    const existingUser = await User.findUserByEmail(email);
     if (existingUser)
       return res.status(409).json({ message: "Email already in use" });
 
-    const password_hash = await hashPassword(password);
+    const newUser = await User.createNewUser({
+      username,
+      email,
+      password,
+    });
 
-    const [newUser] = await createUser({ username, email, password_hash });
-
-    res.status(201).json({ user: newUser });
+    //store this token "user" inside the cookie
+    //res.status(201).json({ user: newUser });
+    res.status(201).send(newUser);
   } catch (err) {
     res
       .status(500)
@@ -24,7 +32,7 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await findUserByEmail(email);
+    const user = await User.findUserByEmail(email);
     if (!user) return res.status(401).json({ message: "Invalid credentials" });
 
     const isValid = await comparePasswords(password, user.password_hash);

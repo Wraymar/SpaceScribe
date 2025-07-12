@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("journal_entries", (table) => {
-    table.increments("id").primary();
+    table.specificType("id", "serial").primary();
     table
       .integer("user_id")
       .notNullable()

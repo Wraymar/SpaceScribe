@@ -1,30 +1,29 @@
 const knex = require("../db/knex");
-const bcrypt = require("bcrypt");
+const {
+  hashPassword,
+  comparePasswords,
+} = require("../utilities/passwordHasher");
 
 class User {
-  constructor({ id, username, email, hashedPassword }) {
+  #hashedPassword; //private value declared
+
+  constructor({ id, username, email, hashed_password }) {
     this.id = id;
     this.username = username;
     this.email = email;
-    this.hashedPassword = hashedPassword;
+    this.#hashedPassword = hashed_password;
   }
 
-  isValidPassword = async (password) => {
-    return await bcrypt.compare(password, this.passwordHash);
-  };
-
-  static async createNewUser({ username, password, email }) {
-    const passwordHash = await bcrypt.hash(password, SALT_ROUNDS);
-
+  static async createNewUser({ username, email, password }) {
+    const hashedPassword = await hashPassword(password);
     const query = `
-    INSERT INTO users (username, email, passwordHash)
+    INSERT INTO users (username, email, hashed_password)
     VALUES (?, ?, ?)
     RETURNING *
   `;
 
-    const result = await knex.raw(query, [username, email, passwordHash]);
+    const result = await knex.raw(query, [username, email, hashedPassword]);
     const rawUserData = result.rows[0];
-    console.log(rawUserData);
     return new User(rawUserData);
   }
 
@@ -48,7 +47,7 @@ class User {
     return rawUserData ? new User(rawUserData) : null;
   }
 
-  static async findByEmail(email) {
+  static async findUserByEmail(email) {
     const query = `SELECT * FROM users WHERE email = ?`;
     const result = await knex.raw(query, [email]);
     const rawUserData = result.rows[0];
@@ -63,14 +62,10 @@ class User {
       WHERE id = ?
       RETURNING *
     `;
-    const result = await knex.raw(query, [username, email, age, zipcode, id]);
+    const result = await knex.raw(query, [username, email, id]);
     const rawUpdatedUser = await result.rows[0];
     return rawUpdatedUser ? new User(rawUpdatedUser) : null;
   }
 }
 
-module.exports = {
-  createUser,
-  findUserByEmail,
-  User,
-};
+module.exports = User;
