@@ -1,0 +1,112 @@
+/* Full screen background */
+.login-bg {
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80")
+    no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Glass effect box */
+.login-wrapper {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 320px;
+  backdrop-filter: blur(12px);
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Headings */
+.login-wrapper h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.login-wrapper p {
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+/* Form styling */
+.login-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  outline: none;
+}
+
+::placeholder {
+  color: #eee;
+}
+
+/* Password container */
+.password-container {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  cursor: pointer;
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 50px;
+  background: #ffbfae;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+/* Options */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  color: #eee;
+}
+
+.login-options a {
+  color: #eee;
+  text-decoration: none;
+}
+
+/* Divider */
+.divider {
+  margin: 1rem 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Social buttons */
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-btn {
+  width: 48%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background: white;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+}

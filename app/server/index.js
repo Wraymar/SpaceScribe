@@ -4,18 +4,43 @@ const path = require("path");
 const express = require("express");
 const app = express();
 
-//Imports
+//IMPORTS
+//*************************************************************************** */
 const logRoutes = require("./middleware/logRoutes");
+//auth
 const { signup, login } = require("./controllers/auth_controllers");
+//journal entry
+const {
+  createJournalEntry,
+  getJournalEntryById,
+  getAllEntriesByUser,
+  updateJournalEntry,
+  deleteJournalEntry,
+} = require("./controllers/journal_entry_controller");
 
 //MIDDLEWARE
+//*************************************************************************** */
 app.use(express.json());
 app.use(logRoutes);
 
 //ROUTES
+//*************************************************************************** */
 //authentication
 app.post("/api/register", signup);
 app.post("/api/login", login);
+
+//journal entries
+app.post("/api/journal/entries/new", createJournalEntry);
+app.get("/api/journal/entries/:id", getJournalEntryById);
+app.get("/api/journal/entries/user/:user_id", getAllEntriesByUser);
+app.patch("/api/journal/entries/:id", updateJournalEntry);
+app.delete("/api/journal/entries/:id", deleteJournalEntry);
+
+//tasks
+// app.post();
+// app.get();
+// app.patch();
+// app.delete();
 
 //EXPRESS STUFF
 //*************************************************************************** */

@@ -14,6 +14,10 @@ class User {
     this.#hashedPassword = hashed_password;
   }
 
+  async isValidPassword(password) {
+    return await comparePasswords(password, this.#hashedPassword);
+  }
+
   static async createNewUser({ username, email, password }) {
     const hashedPassword = await hashPassword(password);
     const query = `
@@ -47,7 +51,7 @@ class User {
     return rawUserData ? new User(rawUserData) : null;
   }
 
-  static async findUserByEmail(email) {
+  static async findUserByEmail(email, password) {
     const query = `SELECT * FROM users WHERE email = ?`;
     const result = await knex.raw(query, [email]);
     const rawUserData = result.rows[0];

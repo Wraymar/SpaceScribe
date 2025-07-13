@@ -19,9 +19,18 @@ const signup = async (req, res) => {
       password,
     });
 
-    //store this token "user" inside the cookie
-    //res.status(201).json({ user: newUser });
-    res.status(201).send(newUser);
+    const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
+    res.status(201).json({
+      token,
+      user: {
+        id: newUser.id,
+        username: newUser.username,
+        email: newUser.email,
+      },
+    });
   } catch (err) {
     res
       .status(500)
@@ -33,15 +42,15 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findUserByEmail(email);
-    if (!user) return res.status(401).json({ message: "Invalid credentials" });
-
-    const isValid = await comparePasswords(password, user.password_hash);
-    if (!isValid)
+    //if no user or the password isn't valid
+    if (!user || !(await user.isValidPassword(password))) {
       return res.status(401).json({ message: "Invalid credentials" });
+    }
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
+
     res.json({
       token,
       user: { id: user.id, username: user.username, email: user.email },
