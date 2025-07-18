@@ -16,6 +16,8 @@ const HomeWeather = () => {
       setCurrentDate(new Date());
     }, 60000);
 
+    console.log(currentDate);
+
     return () => clearInterval(interval);
   }, []);
 
