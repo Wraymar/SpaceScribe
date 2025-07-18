@@ -1,9 +1,6 @@
 const jwt = require("jsonwebtoken");
+const COOKIE_OPTIONS = require("../config/cookieConfig");
 const User = require("../models/user_model");
-const {
-  hashPassword,
-  comparePasswords,
-} = require("../utilities/passwordHasher");
 
 const signup = async (req, res) => {
   console.log(req.body);
@@ -23,14 +20,16 @@ const signup = async (req, res) => {
       expiresIn: "7d",
     });
 
-    res.status(201).json({
-      token,
-      user: {
-        id: newUser.id,
-        username: newUser.username,
-        email: newUser.email,
-      },
-    });
+    res
+      .cookie("token", token, COOKIE_OPTIONS)
+      .status(201)
+      .json({
+        user: {
+          id: newUser.id,
+          username: newUser.username,
+          email: newUser.email,
+        },
+      });
   } catch (err) {
     res
       .status(500)
@@ -51,9 +50,12 @@ const login = async (req, res) => {
       expiresIn: "7d",
     });
 
-    res.json({
-      token,
-      user: { id: user.id, username: user.username, email: user.email },
+    res.cookie("token", token, COOKIE_OPTIONS).json({
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
     });
   } catch (err) {
     res
@@ -62,4 +64,23 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { signup, login };
+const findMe = async (req, res) => {
+  try {
+    const user = await User.findUserById(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json({
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Error retrieving current user", error: err.message });
+  }
+};
+
+module.exports = { signup, login, findMe };
