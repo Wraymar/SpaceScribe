@@ -1,5 +1,3 @@
-/* ===== HOMEPAGE STYLES ===== */
-
 /* Navigation Bar */
 .nav-wrapper {
   display: flex;
@@ -13,7 +11,12 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  min-height: 70px;
+  height: 80px;
+  width: 90%;
+  margin: auto;
+  margin-top: 15px;
+  border-radius: 130px;
+  align-self: center;
 }
 
 .nav-wrapper h2 {
@@ -49,17 +52,22 @@
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
   cursor: pointer;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .nav-link:hover {
   color: var(--text-primary);
   background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
+  transform: translateY(-5px);
+  border-radius: 130px;
+  height: 65px;
 }
 
 .nav-link.active {
   color: var(--accent-orange);
   background: rgba(255, 107, 53, 0.1);
+  border-radius: 130px;
 }
 
 .nav-link.active::after {
@@ -72,6 +80,7 @@
   height: 2px;
   background: var(--accent-orange);
   border-radius: 1px;
+  text-decoration: none;
 }
 
 /* Account Details */
@@ -81,7 +90,7 @@
   gap: var(--spacing-md);
   padding: var(--spacing-sm) var(--spacing-md);
   background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-lg);
+  border-radius: 130px;
   border: 1px solid var(--card-border);
   transition: all var(--transition-fast);
 }
@@ -93,18 +102,18 @@
 }
 
 .account img {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--accent-orange);
+  border: 2px solid rgb(138, 229, 231);
   box-shadow: var(--shadow-sm);
 }
 
 .account_deet {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  height: 45px;
 }
 
 .account_deet p:first-child {
@@ -130,10 +139,16 @@
 /* Weather Card */
 .weather-card {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-sm);
   margin-bottom: var(--spacing-xl);
+  border-radius: 130px;
+  width: 230px;
+  /* float: right; */
+  position: absolute;
+  right: -50px;
+  top: 10px;
 }
 
 .weather-info {

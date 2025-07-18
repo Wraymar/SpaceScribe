@@ -7,7 +7,7 @@
   overflow-x: hidden;
 }
 
-.dynamic-background::before {
+/* .dynamic-background::before {
   content: "";
   position: absolute;
   top: 0;
@@ -21,7 +21,7 @@
   );
   z-index: 1;
   transition: opacity 1s ease-in-out;
-}
+} */
 
 .dynamic-background > * {
   position: relative;
@@ -29,7 +29,7 @@
 }
 
 /* Time-specific overlay adjustments */
-.dynamic-background[data-time="daytime"]::before {
+/* .dynamic-background[data-time="daytime"]::before {
   background: linear-gradient(
     135deg,
     rgba(26, 26, 46, 0.6),
@@ -52,7 +52,7 @@
     rgba(26, 26, 46, 0.7),
     rgba(22, 33, 62, 0.8)
   );
-}
+} */
 
 /* Smooth background transitions */
 .dynamic-background {
