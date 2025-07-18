@@ -1,0 +1,83 @@
+/* ===== DYNAMIC BACKGROUND STYLES ===== */
+
+.dynamic-background {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.dynamic-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.7),
+    rgba(22, 33, 62, 0.8)
+  );
+  z-index: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.dynamic-background > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Time-specific overlay adjustments */
+.dynamic-background[data-time="daytime"]::before {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.6),
+    rgba(22, 33, 62, 0.7)
+  );
+}
+
+.dynamic-background[data-time="night"]::before {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.8),
+    rgba(22, 33, 62, 0.9)
+  );
+}
+
+.dynamic-background[data-time="sunrise"]::before,
+.dynamic-background[data-time="sunset"]::before {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.7),
+    rgba(22, 33, 62, 0.8)
+  );
+}
+
+/* Smooth background transitions */
+.dynamic-background {
+  transition: background-image 1.5s ease-in-out;
+}
+
+/* Loading state */
+.dynamic-background.loading {
+  background-color: var(--primary-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dynamic-background {
+    background-attachment: scroll;
+  }
+}
+
+/* Print styles */
+@media print {
+  .dynamic-background {
+    background: none !important;
+  }
+
+  .dynamic-background::before {
+    display: none;
+  }
+}

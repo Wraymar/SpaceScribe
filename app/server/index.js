@@ -2,13 +2,15 @@
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 //IMPORTS
 //*************************************************************************** */
 const logRoutes = require("./middleware/logRoutes");
+const requireAuth = require("./middleware/requireAuth");
 //auth
-const { signup, login } = require("./controllers/auth_controllers");
+const { signup, login, findMe } = require("./controllers/auth_controllers");
 //journal entry
 const {
   createJournalEntry,
@@ -21,11 +23,13 @@ const {
 //MIDDLEWARE
 //*************************************************************************** */
 app.use(express.json());
+app.use(cookieParser());
 app.use(logRoutes);
 
 //ROUTES
 //*************************************************************************** */
 //authentication
+app.get("/api/me", requireAuth, findMe);
 app.post("/api/register", signup);
 app.post("/api/login", login);
 
