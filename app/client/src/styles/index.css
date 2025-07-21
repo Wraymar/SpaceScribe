@@ -12,7 +12,7 @@
   --primary-dark: #1a1a2e;
   --secondary-dark: #16213e;
   --card-bg: rgba(26, 26, 46, 0.85);
-  --card-border: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(173, 173, 173, 0.727);
 
   /* Warm Accent Colors */
   --accent-orange: #ff6b35;
@@ -51,13 +51,22 @@
   --transition-slow: 0.35s ease;
 
   /* Glass Wrappers */
-  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-bg: rgba(116, 116, 116, 0.25);
   --square-radus: 16px;
   --oval-radius: 130px;
   --glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   --glass-backdrop: blur(2.7px);
   --glass-webkit-backdrop-filter: blur(2.7px);
   --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+
+  /* Glass Wrappers */
+  /* --glass-bg: rgba(116, 116, 116, 0.25);
+  --square-radus: 16px;
+  --oval-radius: 130px;
+  --glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --glass-backdrop: blur(2.7px);
+  --glass-webkit-backdrop-filter: blur(2.7px);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 body {
@@ -113,17 +122,40 @@ p {
 
 /* Glass Effect Cards */
 .glass-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-normal);
+  background: rgba(128, 126, 126, 0.116);
+  backdrop-filter: blur(2.7px) saturate(180%);
+  -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter) saturate(100%);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.842);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.98);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.904);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.752);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 0 20px;
+
+  /* backup */
+  /* background: rgba(30, 30, 30, 0.3); 
+  backdrop-filter: blur(2.7px);
+  -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 4px solid rgba(188, 188, 188, 0.727);
+  border-top: 2px solid rgba(173, 173, 173, 0.727);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 0 20px; */
+}
+
+.glass-card::before {
+  background: inherit; /* This helps simulate distortion of what's behind */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transform: scale(
+    1.05
+  ); /* distortion/magnification *
 }
 
 .glass-card:hover {
   box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 /* Modern Buttons */
@@ -286,10 +318,10 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-orange);
+  background: grey;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-warm);
+  background: white;
 }

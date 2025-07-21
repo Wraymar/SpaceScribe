@@ -10,7 +10,7 @@ function NavBar() {
 
   return (
     <>
-      <div className="nav-wrapper">
+      <div className="glass-card nav-wrapper">
         <Link to="/homepage" style={{ textDecoration: "none" }}>
           <h2>SpaceScribe!</h2>
         </Link>

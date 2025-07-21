@@ -1,15 +1,14 @@
 import NavBar from "../components/homepage/NavBar";
-import HomeWeather from "../components/homepage/HomeWeather";
-import "../styles/homepage.css";
+import HomeWeather from "../components/homepage/HomepageWeather";
+import "../styles/recap.css";
 
 export default function WeeklyRecap() {
   return (
     <>
       <NavBar />
-      <div className="homepage-content">
+      <div className="recap-content">
         {/* Dynamic Weather Card */}
-        <HomeWeather />
-
+        {/* <HomeWeather /> */}
         {/* Stats Cards */}
         <div className="stats-grid">
           <div className="glass-card stat-card">
@@ -40,6 +39,22 @@ export default function WeeklyRecap() {
               Looking forward to continuing this journey of mindful living and
               personal development.
             </p>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
           </div>
         </div>
       </div>

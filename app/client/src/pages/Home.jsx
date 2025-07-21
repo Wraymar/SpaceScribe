@@ -1,5 +1,5 @@
 import NavBar from "../components/homepage/NavBar";
-import HomeWeather from "../components/homepage/HomeWeather";
+import HomeWeather from "../components/homepage/HomepageWeather.jsx";
 import "../styles/homepage.css";
 
 export default function Homepage() {
