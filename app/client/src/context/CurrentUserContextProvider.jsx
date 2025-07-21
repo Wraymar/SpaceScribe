@@ -14,8 +14,6 @@ export default function CurrentUserContextProvider({ children }) {
       } catch (err) {
         console.error("User not logged in");
         setCurrentUser(null);
-      } finally {
-        setIsLoading(false);
       }
     };
 

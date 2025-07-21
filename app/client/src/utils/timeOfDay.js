@@ -1,23 +1,26 @@
 // Time of day utility functions
 export const getTimeOfDay = () => {
   const hour = new Date().getHours();
+  let timeOfDay;
 
   // Sunrise: 5:00 AM - 8:00 AM
   if (hour >= 5 && hour < 8) {
-    return "sunrise";
+    timeOfDay = "sunrise";
   }
   // Daytime: 8:00 AM - 5:00 PM
   else if (hour >= 8 && hour < 17) {
-    return "daytime";
+    timeOfDay = "daytime";
   }
   // Sunset: 5:00 PM - 8:00 PM
   else if (hour >= 17 && hour < 20) {
-    return "sunset";
+    timeOfDay = "sunset";
   }
   // Night: 8:00 PM - 5:00 AM
   else {
-    return "night";
+    timeOfDay = "night";
   }
+  // console.log([timeOfDay, hour]);
+  return timeOfDay;
 };
 
 export const getBackgroundImage = (timeOfDay) => {
@@ -46,20 +49,5 @@ export const getWeatherIcon = (timeOfDay) => {
       return "🌇";
     default:
       return "☀️";
-  }
-};
-
-export const getTimeOfDayLabel = (timeOfDay) => {
-  switch (timeOfDay) {
-    case "daytime":
-      return "Day";
-    case "night":
-      return "Night";
-    case "sunrise":
-      return "Sunrise";
-    case "sunset":
-      return "Sunset";
-    default:
-      return "Day";
   }
 };

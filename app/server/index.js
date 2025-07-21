@@ -9,8 +9,10 @@ const app = express();
 //*************************************************************************** */
 const logRoutes = require("./middleware/logRoutes");
 const requireAuth = require("./middleware/requireAuth");
+
 //auth
 const { signup, login, findMe } = require("./controllers/auth_controllers");
+
 //journal entry
 const {
   createJournalEntry,
@@ -20,6 +22,9 @@ const {
   deleteJournalEntry,
 } = require("./controllers/journal_entry_controller");
 
+//weather
+const getWeather = require("./services/weather");
+
 //MIDDLEWARE
 //*************************************************************************** */
 app.use(express.json());
@@ -28,6 +33,10 @@ app.use(logRoutes);
 
 //ROUTES
 //*************************************************************************** */
+
+//weather
+app.get("/api/weather", getWeather);
+
 //authentication
 app.get("/api/me", requireAuth, findMe);
 app.post("/api/register", signup);

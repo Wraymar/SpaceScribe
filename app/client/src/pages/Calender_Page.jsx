@@ -1,25 +1,53 @@
 import NavBar from "../components/homepage/NavBar";
-import HomeWeather from "../components/homepage/HomeWeather";
-import "../styles/homepage.css";
+import "../styles/calender.css";
 
 export default function CalenderPage() {
   return (
     <>
       <NavBar />
-      <div className="homepage-content">
-        {/* Dynamic Weather Card */}
-        <HomeWeather />
+      <div className="calender-content">
+        <div className="calender-controls">
+          <div className="glass-card calender-preview preview-bg">
+            <h3>Jul 5</h3>
+            <p>Title: About Today!</p>
+            <p>
+              Body: today was so amazing, I finally got the opportunity to go
+              run..
+            </p>
+          </div>
+
+          <div className="glass-card preview-controls">
+            <div className="filter-search">
+              <h3>Search for an entry:</h3>
+              <input
+                type="text"
+                id="searchInput"
+                onkeyup=""
+                placeholder="Search..."
+              />
+              <input
+                type="text"
+                id="filterInput"
+                onkeyup=""
+                placeholder="--Filter--"
+              ></input>
+            </div>
+            <div className="preview-control-btns">
+              <button>Reset</button>
+              <button>Edit</button>
+            </div>
+          </div>
+        </div>
 
         {/* Calendar Section */}
         <div className="glass-card calendar-container">
           <div className="calendar-header">
-            <h3>June 2024</h3>
+            <h3>Jul 2024</h3>
             <div className="calendar-nav">
               <button className="btn btn-ghost btn-icon">‹</button>
               <button className="btn btn-ghost btn-icon">›</button>
             </div>
-          </div>
-
+          </div>{" "}
           <div className="calendar-grid">
             {/* Calendar days will be populated here */}
             <div className="calendar-day-header">Sun</div>
