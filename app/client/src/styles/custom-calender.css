@@ -1,0 +1,117 @@
+.react-calendar {
+  background: transparent;
+  border: none;
+  width: 100%;
+}
+
+.react-calendar__tile {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+  color: var(--text-primary);
+  /* border: 1px solid transparent; */
+  border: 1px solid rgba(255, 255, 255, 0.051) !important;
+}
+
+.react-calendar__tile:hover {
+  background: rgba(128, 128, 128, 0.188) !important;
+  /* transform: scale(1.05); */
+}
+
+.calendar-day.current-day {
+  background: var(--accent-orange) !important;
+  color: white !important;
+  box-shadow: var(--shadow-glow);
+}
+
+.react-calendar__navigation {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
+  border-radius: 50px;
+  background-color: rgba(128, 128, 128, 0.188) !important;
+}
+
+.react-calendar__navigation__prev-button {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
+  border-radius: 30px;
+}
+
+.react-calendar__navigation__next-button {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
+  border-radius: 30px;
+  width: 50px;
+}
+
+.react-calendar__navigation button {
+  width: 150px !important;
+}
+
+.react-calendar__month-view__weekdays {
+  text-transform: none;
+}
+
+abbr[title] {
+  text-decoration: none;
+}
+
+/* can be left commented */
+/* .react-calendar__viewContainer {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
+  border-radius: 30px;
+} */
+/* .react-calendar__view_weekdays {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.842);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.98);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.904);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.752);
+  border-radius: 50px;
+}
+
+.react-calendar__view_days {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.842);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.98);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.904);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.752);
+  border-radius: 50px;
+} */
+
+/* .react-calendar__navigation__arrow {
+  border: 0.5px solid rgba(255, 255, 255, 0.973) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+  border-right: 0.5px solid rgba(216, 215, 215, 0.16) !important;
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16) !important;
+  border-left: 0.08px solid rgba(253, 253, 253, 0.16) !important;
+  border-radius: 30px;
+  background-color: rgba(198, 195, 195, 0.061) !important;
+} */
+
+/* .react-calendar__navigation__prev2-button {
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
+  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
+  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
+  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
+  border-radius: 30px;
+} */
