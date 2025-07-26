@@ -17,10 +17,10 @@ exports.up = function (knex) {
       .references("id")
       .inTable("journal_entries")
       .onDelete("CASCADE");
-    table.string("filename").notNullable();
-    table.string("s3_url").notNullable();
-    table.string("s3_key").notNullable();
-    table.string("file_type").notNullable();
+    table.string("filename"); //.notNullable();
+    table.string("cloudinary_url").notNullable();
+    // table.string("cloudinary_key").notNullable();
+    table.string("file_type"); //.notNullable();
     table.integer("file_size");
     table.string("alt_text");
     table.text("caption");

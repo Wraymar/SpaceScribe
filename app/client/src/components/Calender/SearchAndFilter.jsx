@@ -6,13 +6,13 @@ function SearchAndFilter() {
         <input
           type="text"
           id="searchInput"
-          onkeyup=""
+          // onkeyup=""
           placeholder="Search..."
         />
         <input
           type="text"
           id="filterInput"
-          onkeyup=""
+          // onkeyup=""
           placeholder="--Filter--"
         ></input>
       </div>

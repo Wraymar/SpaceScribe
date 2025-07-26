@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./styles/components.css";
 import DynamicBackground from "./components/DynamicBackground";

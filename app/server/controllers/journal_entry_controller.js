@@ -10,7 +10,7 @@ exports.createJournalEntry = async (req, res) => {
       mood,
       is_shared,
     });
-    res.status(201).json(newEntry);
+    res.status(201).json({ newEntry, message: "Entry Created!" });
   } catch (error) {
     console.error("Error creating journal entry:", error);
     res.status(500).json({ error: "Failed to create journal entry" });

@@ -7,6 +7,7 @@ const app = express();
 
 //IMPORTS
 //*************************************************************************** */
+const upload = require("./middleware/upload");
 const logRoutes = require("./middleware/logRoutes");
 const requireAuth = require("./middleware/requireAuth");
 
@@ -22,6 +23,9 @@ const {
   deleteJournalEntry,
 } = require("./controllers/journal_entry_controller");
 
+//media
+const uploadImage = require("./controllers/mediaController");
+
 //weather
 const getWeather = require("./services/weather");
 
@@ -33,6 +37,10 @@ app.use(logRoutes);
 
 //ROUTES
 //*************************************************************************** */
+
+//upload an image
+//listen for this endpoint    use this middleware    pass to controller
+app.post("/api/media/upload", upload.single("image"), uploadImage);
 
 //weather
 app.get("/api/weather", getWeather);

@@ -1,17 +1,3 @@
-// function CalendarPreview() {
-//   return (
-//     <div className="glass-card calender-preview preview-bg">
-//       <h3>Jul 5</h3>
-//       <p>Title: About Today!</p>
-//       <p>
-//         Body: today was so amazing, I finally got the opportunity to go run..
-//       </p>
-//     </div>
-//   );
-// }
-
-// export default CalendarPreview;
-
 function CalendarPreview({ entry, imageUrl }) {
   if (!entry) {
     return (
@@ -36,7 +22,7 @@ function CalendarPreview({ entry, imageUrl }) {
         <strong>Title:</strong> {entry.title}
       </p>
       <p>
-        <strong>Body:</strong> {entry.body.slice(0, 100)}...
+        <strong>Body:</strong> {entry.content.slice(0, 100)}...
       </p>
     </div>
   );
