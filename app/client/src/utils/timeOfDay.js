@@ -26,14 +26,14 @@ export const getTimeOfDay = () => {
 export const getBackgroundImage = (timeOfDay) => {
   switch (timeOfDay) {
     case "daytime":
-      return "/src/assets/images/homepageDaytime.png";
+      return "/src/assets/images/lofiStudy.jpg";
     case "night":
-      return "/src/assets/images/HomepageNight.png";
+      return "/src/assets/images/mtnForest.jpg";
     case "sunrise":
     case "sunset":
-      return "/src/assets/images/homepageSunsetSunrise.png";
+      return "/src/assets/images/mtn.jpg";
     default:
-      return "/src/assets/images/homepageDaytime.png";
+      return "/src/assets/images/lofiStudy.jpg";
   }
 };
 

@@ -5,6 +5,7 @@ import EntryForm from "../components/Entries/EntryForm";
 import MoodEntry from "../components/Entries/MoodEntry";
 import EntryControls from "../components/Entries/EntryControls";
 import currentUserContext from "../context/current-user-context";
+import ImageUpload from "../components/Entries/ImageUpload";
 
 import "../styles/entries.css";
 
@@ -13,6 +14,13 @@ export default function Entries() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { currentUser } = useContext(currentUserContext);
+
+  //state for the image upload
+  const [entryId, setEntryId] = useState(null);
+
+  if (!currentUser || !currentUser.id) return null;
+
+  // console.log("Current user in entries:", currentUser);
 
   const emojis = [
     ["🙏", "greatful"],
@@ -36,12 +44,15 @@ export default function Entries() {
       const data = { user_id, mood, title, content };
       const response = await axios.post(endpoint, data);
       console.log("New Entry Created", response.data);
+      setEntryId(response.data.newEntry.id);
       //
     } catch (err) {
       console.error("Entry submission failed", err);
     }
 
     //reset the form
+
+    //WAIT FOR THE IMAGE TO BE UPLOADED THEN CLEAR
     setTitle("");
     setContent("");
     setMood("");
@@ -53,11 +64,18 @@ export default function Entries() {
 
       <div className="entries-content">
         <div className="entry-controls">
-          <MoodEntry
-            emojis={emojis}
-            username={currentUser.username}
-            setMood={setMood}
-          />
+          {/* if there is an entry id then we replace the mood entry with the upload form */}
+          {entryId ? (
+            <div className="glass-card image-upload-form">
+              <ImageUpload journalEntryId={entryId} userId={currentUser.id} />
+            </div>
+          ) : (
+            <MoodEntry
+              emojis={emojis}
+              username={currentUser.username}
+              setMood={setMood}
+            />
+          )}
 
           <EntryControls handleSubmit={handleSubmit} />
         </div>

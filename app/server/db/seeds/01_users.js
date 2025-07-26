@@ -1,3 +1,5 @@
+const { hashPassword } = require("../../utilities/passwordHasher");
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
@@ -19,6 +21,12 @@ exports.seed = async function (knex) {
       username: "artfulwanderer",
       email: "wanderer@example.com",
       hashed_password: "hashed_pw_3",
+    },
+    {
+      username: "Wraymar",
+      email: "wraymar@email.com",
+      hashed_password:
+        "$2b$10$oszTgem.2riz/PcnO4f0Se8aHI7XD8pbEmwCKVZlh4GE/BV8KHzl6",
     },
   ]);
 };

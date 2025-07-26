@@ -43,13 +43,15 @@ function NavBar() {
         </div>
 
         {currentUser && (
-          <AccountDeet
-            imgSrc={
-              "https://www.freeiconspng.com/uploads/blue-circle-icon-18.png"
-            }
-            username={currentUser.username}
-            email={currentUser.email}
-          />
+          <Link to="/userpage">
+            <AccountDeet
+              imgSrc={
+                "https://www.freeiconspng.com/uploads/blue-circle-icon-18.png"
+              }
+              username={currentUser.username}
+              email={currentUser.email}
+            />
+          </Link>
         )}
       </div>
     </>

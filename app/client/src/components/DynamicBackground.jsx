@@ -27,11 +27,11 @@ const DynamicBackground = ({ children }) => {
       data-time={timeOfDay}
       style={{
         backgroundImage: `url(${backgroundImage})`,
-        // backgroundSize: "cover",
-        // backgroundPosition: "center",
-        // backgroundRepeat: "no-repeat",
-        backdropFilter: "blur(10px)",
-        minHeight: "100vh",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        // backdropFilter: "blur(10px)",
+        // minHeight: "100vh",
         transition: "background-image 1.5s ease-in-out",
       }}
     >
