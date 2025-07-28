@@ -1,61 +1,89 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import NavBar from "../components/homepage/NavBar";
 import Calender from "../components/Calender/calender";
 import CalendarPreview from "../components/Calender/CalenderPreview";
-import SearchAndFilter from "../components/Calender/SearchAndFilter";
-import "../styles/calender.css";
 import axios from "axios";
+import currentUserContext from "../context/current-user-context";
+import "../styles/calender.css";
 
 export default function CalenderPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [entries, setEntries] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
+  const [mediaMap, setMediaMap] = useState({});
+  const { currentUser } = useContext(currentUserContext);
 
-  console.log(entries);
+  const selectedDateStr = selectedDate.toISOString().split("T")[0]; // 'YYYY-MM-DD'
+
+  //Use Memo helps to not constantly filter unnecessarily
+  //Since
+  const entriesForDate = useMemo(() => {
+    return entries.filter((entry) =>
+      entry.created_at.startsWith(selectedDateStr)
+    );
+  }, [entries, selectedDateStr]);
 
   useEffect(() => {
-    // Fetch all entries once and store locally
-    axios.get(`/api/journal/entries/user/2`).then((res) => {
-      console.log(entries);
-      setEntries(res.data);
-    });
+    const fetchEntries = async () => {
+      try {
+        const response = await axios.get(
+          `/api/journal/entries/user/${currentUser.id}`
+        );
+        if (response.data) {
+          console.log(response.data);
+          setEntries(response.data);
+        }
+      } catch (err) {
+        console.log("failed to fetch entries");
+      }
+    };
+
+    fetchEntries();
   }, []);
 
-  //searches the database for an entry that matches the given date
-  const getEntryForDate = (date) => {
-    const formatted = date.toISOString().split("T")[0]; // 'YYYY-MM-DD'
-    return entries.find((entry) => entry.created_at.startsWith(formatted));
-  };
-
-  //preview entry is the found entry inside of the db
-  const previewEntry = getEntryForDate(selectedDate);
-
   useEffect(() => {
-    if (previewEntry) {
-      // Fetch image for the selected entry
-      axios
-        //the media should get the journal entry id and comapre to the media.journal_entry_id
-        .get(`/api/media/entry/${previewEntry.id}`)
-        .then((res) => {
-          // if (res.data && res.data.s3_url) {
-          //   setPreviewImage(res.data.s3_url);
-          // } else {
-          //   setPreviewImage(null);
-          // }
+    const fetchAllMedia = async () => {
+      const map = { ...mediaMap };
+      await Promise.all(
+        entriesForDate.map(async (entry) => {
+          if (map[entry.id] !== undefined) return; // Already fetched or attempted
+          try {
+            const res = await axios.get(`/api/media/entry/${entry.id}`);
+            if (res.data && res.data.cloudinary_url) {
+              map[entry.id] = res.data.cloudinary_url;
+            } else {
+              map[entry.id] = null;
+            }
+          } catch {
+            map[entry.id] = null;
+          }
         })
-        .catch(() => setPreviewImage(null));
-    } else {
-      setPreviewImage(null);
+      );
+      setMediaMap(map);
+    };
+
+    if (entriesForDate.length > 0) {
+      fetchAllMedia();
     }
-  }, [previewEntry]);
+  }, [entriesForDate]);
+
+  // Guard render AFTER all hooks
+  if (!currentUser || !currentUser.id) return null;
 
   return (
     <>
       <NavBar />
       <div className="calender-content">
         <div className="calender-controls">
-          <CalendarPreview entry={previewEntry} imageUrl={previewImage} />
-          <SearchAndFilter />
+          <div className="polaroid-scroll-container">
+            {entriesForDate.map((entry) => (
+              <CalendarPreview
+                key={entry.id}
+                entry={entry}
+                imageUrl={mediaMap[entry.id] || null}
+              />
+            ))}
+          </div>
         </div>
         <div className="glass-card calendar-container">
           <Calender onDateSelect={setSelectedDate} />

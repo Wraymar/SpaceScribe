@@ -20,8 +20,6 @@ export default function Entries() {
 
   if (!currentUser || !currentUser.id) return null;
 
-  // console.log("Current user in entries:", currentUser);
-
   const emojis = [
     ["🙏", "greatful"],
     ["😊", "happy"],

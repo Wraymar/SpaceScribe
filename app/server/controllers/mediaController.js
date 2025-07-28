@@ -38,4 +38,18 @@ async function uploadImage(req, res) {
   }
 }
 
-module.exports = uploadImage;
+const getMediaById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const media = await Media.getSingleEntryByJournalId(id);
+    if (!media) {
+      return res.status(404).json({ error: "Journal entry not found" });
+    }
+    res.json(media);
+  } catch (error) {
+    console.error("Error fetching media:", error);
+    res.status(500).json({ error: "Failed to fetch media" });
+  }
+};
+
+module.exports = { uploadImage, getMediaById };

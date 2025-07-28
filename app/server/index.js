@@ -24,7 +24,7 @@ const {
 } = require("./controllers/journal_entry_controller");
 
 //media
-const uploadImage = require("./controllers/mediaController");
+const { uploadImage, getMediaById } = require("./controllers/mediaController");
 
 //weather
 const getWeather = require("./services/weather");
@@ -41,6 +41,9 @@ app.use(logRoutes);
 //upload an image
 //listen for this endpoint    use this middleware    pass to controller
 app.post("/api/media/upload", upload.single("image"), uploadImage);
+
+//media
+app.get("/api/media/entry/:id", getMediaById);
 
 //weather
 app.get("/api/weather", getWeather);

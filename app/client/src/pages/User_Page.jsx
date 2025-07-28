@@ -18,11 +18,11 @@ const userData = {
   lastMonthData: false,
   // Mood breakdown for chart
   moodBreakdown: [
-    { name: "Happy", value: 8, color: "#B9A1E3" },
-    { name: "Stressed", value: 2, color: "#F7C59F" },
-    { name: "Relaxed", value: 3, color: "#A3D9C9" },
-    { name: "Anxious", value: 1, color: "#F49FB6" },
-    { name: "Lonely", value: 1, color: "#B0B0B0" },
+    { name: "Greatful", value: 8, color: "#b297e0ff" },
+    { name: "Happy", value: 2, color: "#0a8956ff" },
+    { name: "Angry", value: 3, color: "#a72e2eff" },
+    { name: "Sad", value: 1, color: "#003f6cff" },
+    { name: "Anxious", value: 1, color: "#dba41aff" },
   ],
 };
 
@@ -32,20 +32,24 @@ export default function UserPage() {
       <NavBar />
       <div className="userpage-content">
         <div className="userpage-left">
-          <div className="userpage-weather">{/* <HomeWeather /> */}</div>
-          <div className="userpage-mood-chart">
+          <div className="glass-card userpage-weather">
+            {/* <HomeWeather /> */}
+            <h1>Weather Goes Here</h1>
+          </div>
+          {/*  */}
+          <div className="glass-card userpage-mood-chart">
             <h3 style={{ textAlign: "center" }}>Your Mood Dashboard</h3>
             <MoodChart data={userData.moodBreakdown} />
             <div className="mood-dashboard-stats">
               <div>
                 Most Tracked: <b>{userData.mostTrackedMood}</b>
               </div>
-              <div>
+              {/* <div>
                 Last Month:{" "}
                 <b>{userData.lastMonthData ? "Data Available" : "No Data"}</b>
-              </div>
+              </div> */}
             </div>
-            <div className="journal-reflect">
+            {/* <div className="journal-reflect">
               <div>
                 Journal Entries This Week:{" "}
                 <b>{userData.journalEntriesThisWeek}</b>
@@ -53,15 +57,17 @@ export default function UserPage() {
               <div>
                 Days Since Last Journal: <b>{userData.daysSinceLastJournal}</b>
               </div>
-            </div>
+            </div> */}
           </div>
+          {/*  */}
         </div>
-        <div className="userpage-right">
+        <div className="glass-card userpage-right">
           <div className="user-info-card">
             <div className="user-info-header">
               <div className="user-avatar">
                 <img src={userData.avatar} alt="User Avatar" />
               </div>
+              <br />
               <div className="user-credentials">
                 <p className="username">Username: {userData.username}</p>
                 <p className="email">Email: {userData.email}</p>
@@ -71,6 +77,10 @@ export default function UserPage() {
               <p>Streak Count: {userData.streakCount} days</p>
               <p>Journaling Goal: {userData.journalingGoal}</p>
               <p>Total Entries: {userData.totalEntries}</p>
+            </div>
+            <div className="user-controls">
+              <button>Edit Info</button>
+              <button>Logout</button>
             </div>
           </div>
         </div>

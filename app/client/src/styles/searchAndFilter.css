@@ -1,0 +1,30 @@
+/* Limit the height of the list and enable scroll */
+.glass-card ul {
+  max-height: 100px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Style individual list items */
+.glass-card li {
+  padding: 5px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease;
+  font-size: 15px;
+}
+
+.glass-card li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+/* Style the links inside list items */
+.glass-card li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}

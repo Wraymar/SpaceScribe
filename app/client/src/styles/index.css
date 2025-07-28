@@ -58,15 +58,6 @@
   --glass-backdrop: blur(2.7px);
   --glass-webkit-backdrop-filter: blur(2.7px);
   --glass-border: 1px solid rgba(255, 255, 255, 0.3);
-
-  /* Glass Wrappers */
-  /* --glass-bg: rgba(116, 116, 116, 0.25);
-  --square-radus: 16px;
-  --oval-radius: 130px;
-  --glass-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  --glass-backdrop: blur(2.7px);
-  --glass-webkit-backdrop-filter: blur(2.7px);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 body {
@@ -97,13 +88,13 @@ h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
-}
-h2 {
   font-size: 2rem;
 }
-h3 {
+h2 {
   font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.25rem;
 }
 h4 {
   font-size: 1.25rem;
@@ -123,8 +114,9 @@ p {
 /* Glass Effect Cards */
 .glass-card {
   background: rgba(128, 126, 126, 0.116);
-  backdrop-filter: blur(2.7px) saturate(180%);
-  -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter) saturate(100%);
+  /* BackDrop filter causes lag */
+  /* backdrop-filter: blur(2.7px) saturate(180%); */
+  /* -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter) saturate(100%); */
   border: 0.5px solid rgba(255, 255, 255, 0.1);
   border-top: 1.5px solid rgba(255, 255, 255, 0.16);
   border-right: 0.5px solid rgba(216, 215, 215, 0.16);
@@ -132,25 +124,6 @@ p {
   border-left: 0.08px solid rgba(253, 253, 253, 0.16);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   padding: 0 20px;
-
-  /* backup */
-  /* background: rgba(30, 30, 30, 0.3); 
-  backdrop-filter: blur(2.7px);
-  -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter);
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 4px solid rgba(188, 188, 188, 0.727);
-  border-top: 2px solid rgba(173, 173, 173, 0.727);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  padding: 0 20px; */
-}
-
-.glass-card::before {
-  background: inherit; /* This helps simulate distortion of what's behind */
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  transform: scale(
-    1.05
-  ); /* distortion/magnification *
 }
 
 .glass-card:hover {

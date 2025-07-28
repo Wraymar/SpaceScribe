@@ -8,16 +8,51 @@
   margin-top: 40px;
 }
 
-.userpage-right {
-  border: 2px solid blue;
-  width: 660px;
-  height: 660px;
-  margin-right: 30px;
-}
+/* Left side */
 
 .userpage-left {
-  border: 2px solid red;
   width: 660px;
   height: 660px;
   margin-left: 30px;
+  border: 2px solid red;
+}
+
+.userpage-weather {
+  height: 300px;
+  border-radius: 50px;
+}
+
+.userpage-mood-chart {
+  border-radius: 50px;
+  height: 300px;
+}
+
+/* Right side  */
+
+.userpage-right {
+  border-radius: 50px;
+  width: 660px;
+  height: 660px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.user-avatar img {
+  width: 220px;
+  object-fit: cover;
+}
+
+.user-controls {
+  display: flex;
+  justify-content: space-evenly;
 }

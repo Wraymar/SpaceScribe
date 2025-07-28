@@ -56,6 +56,14 @@ class Media {
     return result.rows.map((m) => new Media(m));
   }
 
+  static async getSingleEntryByJournalId(journalId) {
+    const query = `
+      SELECT * FROM media where journal_entry_id = ?
+    `;
+    const result = await knex.raw(query, [journalId]);
+    return result.rows[0];
+  }
+
   static async findAllByUserId(userid) {
     const query = `
       SELECT * FROM media WHERE user_id = ?
