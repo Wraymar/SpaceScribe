@@ -1,0 +1,64 @@
+.userpage-weather-card {
+  height: 200px;
+  border-radius: 50px;
+  margin-bottom: 60px;
+}
+
+.weather-div-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.top-div-left {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.icon-and-temp {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.temperature {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.weather-details p,
+.weather-details span {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgb(143, 232, 250);
+}
+
+.top-div-right h2,
+.top-div-right p {
+  margin: 0; /* Removes default margins */
+  padding: 0; /* Ensures no extra spacing */
+  line-height: 1.2; /* Adjusts vertical spacing */
+}
+
+.top-div-right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Adds small consistent spacing between items */
+}
+
+.line {
+  height: 15px;
+}
+
+.weather-div-bottom {
+  display: flex;
+  gap: 60px;
+}
+
+.icon-and-temp img {
+  width: 75px;
+}

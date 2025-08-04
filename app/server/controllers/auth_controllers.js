@@ -17,7 +17,7 @@ const signup = async (req, res) => {
     });
 
     const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "3d",
     });
 
     res
@@ -47,7 +47,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "3d",
     });
 
     res.cookie("token", token, COOKIE_OPTIONS).json({

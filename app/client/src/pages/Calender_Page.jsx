@@ -2,6 +2,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import NavBar from "../components/homepage/NavBar";
 import Calender from "../components/Calender/calender";
 import CalendarPreview from "../components/Calender/CalenderPreview";
+import PreviewModal from "../components/Calender/PopUpModal";
 import axios from "axios";
 import currentUserContext from "../context/current-user-context";
 import "../styles/calender.css";
@@ -9,9 +10,13 @@ import "../styles/calender.css";
 export default function CalenderPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [entries, setEntries] = useState([]);
-  const [previewImage, setPreviewImage] = useState(null);
+  // const [previewImage, setPreviewImage] = useState(null);
   const [mediaMap, setMediaMap] = useState({});
   const { currentUser } = useContext(currentUserContext);
+
+  //modal
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedEntry, setSelectedEntry] = useState(null);
 
   const selectedDateStr = selectedDate.toISOString().split("T")[0]; // 'YYYY-MM-DD'
 
@@ -30,7 +35,7 @@ export default function CalenderPage() {
           `/api/journal/entries/user/${currentUser.id}`
         );
         if (response.data) {
-          console.log(response.data);
+          //console.log(response.data);
           setEntries(response.data);
         }
       } catch (err) {
@@ -70,6 +75,8 @@ export default function CalenderPage() {
   // Guard render AFTER all hooks
   if (!currentUser || !currentUser.id) return null;
 
+  // console.log("selectedEntry", selectedEntry);
+
   return (
     <>
       <NavBar />
@@ -81,6 +88,8 @@ export default function CalenderPage() {
                 key={entry.id}
                 entry={entry}
                 imageUrl={mediaMap[entry.id] || null}
+                setSelectedEntry={setSelectedEntry}
+                setIsOpen={setIsOpen}
               />
             ))}
           </div>
@@ -89,6 +98,14 @@ export default function CalenderPage() {
           <Calender onDateSelect={setSelectedDate} />
         </div>
       </div>
+      {selectedEntry && (
+        <PreviewModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          selectedEntry={selectedEntry}
+          imageUrl={mediaMap[selectedEntry.id] || null}
+        />
+      )}
     </>
   );
 }

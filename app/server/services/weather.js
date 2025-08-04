@@ -1,4 +1,5 @@
 require("dotenv").config();
+const formatWeather = require("../utilities/formatWeather");
 
 const getWeather = async (req, res) => {
   try {
@@ -8,7 +9,9 @@ const getWeather = async (req, res) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    res.status(200).json(data);
+    // console.log(formatWeather(data));
+    const formattedData = formatWeather(data);
+    res.status(200).json(formattedData);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: "Failed to fetch weather data" });

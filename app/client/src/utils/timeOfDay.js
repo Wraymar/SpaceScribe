@@ -9,7 +9,7 @@ export const getTimeOfDay = () => {
   }
   // Daytime: 8:00 AM - 5:00 PM
   else if (hour >= 8 && hour < 17) {
-    timeOfDay = "daytime";
+    timeOfDay = "sunrise";
   }
   // Sunset: 5:00 PM - 8:00 PM
   else if (hour >= 17 && hour < 20) {

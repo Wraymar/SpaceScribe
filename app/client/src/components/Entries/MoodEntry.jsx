@@ -1,8 +1,8 @@
-function MoodEntry({ emojis, username, setMood }) {
+function MoodEntry({ emojis, username, mood, setMood }) {
   return (
-    <div className="glass-card mood-selection">
+    <>
       <h3>Hi {username}!</h3>
-      <p>Which emoji suits how you feel today?</p>
+      <p>Which emoji describes your mood?</p>
       <div className="emoji-grid">
         {emojis.map(([icon, label]) => (
           <button
@@ -14,7 +14,14 @@ function MoodEntry({ emojis, username, setMood }) {
           </button>
         ))}
       </div>
-    </div>
+      <input
+        type="text"
+        placeholder="None fits? Type your mood..."
+        className="custom-mood-input"
+        value={mood}
+        onChange={(e) => setMood(e.target.value)}
+      />
+    </>
   );
 }
 
