@@ -5,7 +5,7 @@ const User = require("../models/user_model");
 const signup = async (req, res) => {
   console.log(req.body);
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, goal } = req.body;
     const existingUser = await User.findUserByEmail(email);
     if (existingUser)
       return res.status(409).json({ message: "Email already in use" });
@@ -14,6 +14,10 @@ const signup = async (req, res) => {
       username,
       email,
       password,
+      goal,
+      current_streak: 0,
+      longest_streak: 0,
+      last_entry_date: null,
     });
 
     const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, {
@@ -28,6 +32,7 @@ const signup = async (req, res) => {
           id: newUser.id,
           username: newUser.username,
           email: newUser.email,
+          goal: newUser.goal,
         },
       });
   } catch (err) {
@@ -55,6 +60,7 @@ const login = async (req, res) => {
         id: user.id,
         username: user.username,
         email: user.email,
+        goal: user.goal,
       },
     });
   } catch (err) {
@@ -74,6 +80,7 @@ const findMe = async (req, res) => {
         id: user.id,
         username: user.username,
         email: user.email,
+        goal: user.goal,
       },
     });
   } catch (err) {
@@ -83,4 +90,15 @@ const findMe = async (req, res) => {
   }
 };
 
-module.exports = { signup, login, findMe };
+const logout = (req, res) => {
+  try {
+    res.clearCookie("token", COOKIE_OPTIONS);
+    return res.status(200).json({ message: "Logged out successfully" });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Error logging out", error: err.message });
+  }
+};
+
+module.exports = { signup, login, findMe, logout };

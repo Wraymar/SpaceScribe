@@ -14,6 +14,7 @@ export default function LoginPage() {
   const [error, setError] = useState(null);
   const [hasAcc, setHasAcc] = useState(true);
   const [username, setUsername] = useState("");
+  const [goal, setGoal] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -60,6 +61,8 @@ export default function LoginPage() {
             password={password}
             setPassword={setPassword}
             setHasAcc={setHasAcc}
+            goal={goal}
+            setGoal={setGoal}
             handleSubmit={handleSubmit}
             error={error}
           />

@@ -40,6 +40,16 @@ exports.getAllEntriesByUser = async (req, res) => {
   }
 };
 
+exports.getEntryCountByUser = async (req, res) => {
+  try {
+    const total = await JournalEntry.countByUserId(req.user.id); // use requireAuth
+    res.json({ total });
+  } catch (error) {
+    console.error("Error counting journal entries:", error);
+    res.status(500).json({ error: "Failed to count journal entries" });
+  }
+};
+
 exports.updateJournalEntry = async (req, res) => {
   try {
     const { title, content, mood, is_shared } = req.body;

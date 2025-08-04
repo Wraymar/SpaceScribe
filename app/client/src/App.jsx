@@ -3,7 +3,7 @@ import "./styles/components.css";
 import DynamicBackground from "./components/DynamicBackground";
 
 //PAGE IMPORTS
-import Login from "./pages/login.jsx";
+import Login from "./pages/Login.jsx";
 import Homepage from "./pages/Home.jsx";
 import CalenderPage from "./pages/Calender_Page.jsx";
 import Entries from "./pages/Entries.jsx";

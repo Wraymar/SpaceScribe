@@ -1,7 +1,8 @@
 import NavBar from "../components/homepage/NavBar";
 import MoodChart from "../components/userpage/MoodChart";
 import ExtendedWeather from "../components/userpage/extendedWeather";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import currentUserContext from "../context/current-user-context";
 import "../styles/userpage.css";
 import { useNavigate } from "react-router-dom";
@@ -32,11 +33,41 @@ const userData = {
 
 export default function UserPage() {
   const { currentUser, setCurrentUser } = useContext(currentUserContext);
+  const [streakData, setStreakData] = useState({ current: 0, longest: 0 });
+  const [totalEntries, setTotalEntries] = useState(0);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setCurrentUser(null);
-    navigate("/");
+  console.log(currentUser);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const streakRes = await axios.get("/api/user/getStreak", {
+          withCredentials: true,
+        });
+        setStreakData(streakRes.data.streak);
+
+        const entriesRes = await axios.get("/api/user/entries/count", {
+          withCredentials: true,
+        });
+        setTotalEntries(entriesRes.data.total);
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+      }
+    };
+
+    if (currentUser) fetchUserData();
+  }, [currentUser]);
+
+  //update to unsign the jwt in the backend when logging out
+  const handleLogout = async () => {
+    try {
+      await axios.post("/api/logout", {}, { withCredentials: true });
+      setCurrentUser(null);
+      navigate("/"); // redirect to login page
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   return (
@@ -83,9 +114,10 @@ export default function UserPage() {
               </div>
             </div>
             <div className="user-stats">
-              <p>Streak Count: {userData.streakCount} days</p>
-              <p>Journaling Goal: {userData.journalingGoal}</p>
-              <p>Total Entries: {userData.totalEntries}</p>
+              <p>Streak Count: {streakData.current} days</p>
+              <p>Longest Streak: {streakData.longest} days</p>
+              <p>Journaling Goal: {currentUser?.goal}</p>
+              <p>Total Entries: {totalEntries}</p>
             </div>
             <div className="user-controls">
               <button>Edit Info</button>

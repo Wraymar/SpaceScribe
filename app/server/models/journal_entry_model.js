@@ -39,6 +39,12 @@ class JournalEntry {
     return result.rows.map((entry) => new JournalEntry(entry));
   }
 
+  static async countByUserId(user_Id) {
+    const query = `SELECT COUNT(id) AS total FROM journal_entries WHERE user_id = ?`;
+    const result = await knex.raw(query, [user_Id]);
+    return parseInt(result.rows[0].total, 10);
+  }
+
   static async updateById(id, { title, content, mood, is_shared }) {
     const query = `
       UPDATE journal_entries

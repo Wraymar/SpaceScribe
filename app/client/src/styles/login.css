@@ -14,7 +14,7 @@
 /* Glass effect box */
 .login-wrapper {
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
+  /* backdrop-filter: blur(20px); */
   border: 1px solid var(--card-border);
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
@@ -87,7 +87,7 @@
   position: relative;
 }
 
-.eye-icon {
+/* .eye-icon {
   position: absolute;
   right: var(--spacing-md);
   top: 50%;
@@ -97,7 +97,7 @@
   color: var(--text-muted);
   transition: color var(--transition-fast);
   user-select: none;
-}
+} */
 
 .eye-icon:hover {
   color: var(--accent-orange);
