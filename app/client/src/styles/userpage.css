@@ -14,17 +14,17 @@
   width: 660px;
   height: 660px;
   margin-left: 30px;
-  border: 2px solid red;
 }
 
 .userpage-weather {
-  height: 300px;
+  height: 200px;
   border-radius: 50px;
+  margin-bottom: 60px;
 }
 
 .userpage-mood-chart {
   border-radius: 50px;
-  height: 300px;
+  height: 400px;
 }
 
 /* Right side  */
@@ -48,8 +48,13 @@
 }
 
 .user-avatar img {
-  width: 220px;
-  object-fit: cover;
+  /* width: 220px;
+  object-fit: cover; */
+  width: 150px; /* Set your desired size */
+  height: 150px;
+  border-radius: 50%; /* Makes it a perfect circle */
+  object-fit: cover; /* Ensures image fills circle without distortion */
+  border: 2px solid #fff;
 }
 
 .user-controls {

@@ -6,7 +6,7 @@
   display: flex;
   gap: 20px;
   height: 80%;
-  border: red solid 2px;
+  /* border: red solid 2px; */
 }
 
 .calender-controls {
@@ -17,7 +17,7 @@
   width: 25%;
   height: 800px;
   gap: 40px;
-  border: green solid 2px;
+  /* border: green solid 2px; */
 }
 
 .calender-preview {

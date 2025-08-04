@@ -152,6 +152,7 @@ p {
   background: linear-gradient(135deg, var(--accent-orange), var(--accent-warm));
   color: white;
   box-shadow: var(--shadow-sm);
+  width: 165px;
 }
 
 .btn-primary:hover {
@@ -277,7 +278,7 @@ html {
 
 /* Focus Styles for Accessibility */
 *:focus {
-  outline: 2px solid var(--accent-orange);
+  /* outline: 2px solid var(--accent-orange); */
   outline-offset: 2px;
 }
 

@@ -16,8 +16,8 @@ export default function App() {
   return (
     <DynamicBackground>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/homepage" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/recap" element={<WeeklyRecap />} />
         <Route path="/calender" element={<CalenderPage />} />
         <Route path="/journal" element={<JournalPage />} />

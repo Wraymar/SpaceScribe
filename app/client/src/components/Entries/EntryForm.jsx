@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-function EntryForm({ title, setTitle, content, setContent, handleSubmit }) {
+function EntryForm({
+  title,
+  setTitle,
+  content,
+  setContent,
+  handleSubmit,
+  imagePreview,
+}) {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const formatDate = (date) => {
@@ -23,9 +30,10 @@ function EntryForm({ title, setTitle, content, setContent, handleSubmit }) {
     <>
       <form id="entry-form" name="entry-form" onSubmit={handleSubmit}>
         <div className="date-header">
-          <h3>{date[0]}</h3>
-          <h3>{date[1]}</h3>
-          <h3>{date[2]}</h3>
+          <h1>{date[0]}</h1>
+          <h2>
+            {date[1]} {date[2]}
+          </h2>
         </div>
         <div className="form-group">
           <input
@@ -44,6 +52,11 @@ function EntryForm({ title, setTitle, content, setContent, handleSubmit }) {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
+          {imagePreview && (
+            <div className="image-preview">
+              <img src={imagePreview} alt="Preview" />
+            </div>
+          )}
         </div>
       </form>
     </>

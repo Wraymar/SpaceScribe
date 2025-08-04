@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import axios from "../../utils/axiosConfig";
 import { getTimeOfDay, getWeatherIcon } from "../../utils/timeOfDay";
+import fetchWeather from "../../adapters/fetchWeather";
 
 const HomeWeather = () => {
-  const [weather, setWeather] = useState();
+  const [weather, setWeather] = useState(null);
   const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -19,54 +19,17 @@ const HomeWeather = () => {
   }, []);
 
   useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const response = await axios.get("/api/weather");
-        setWeather(response.data);
-        console.log(response.data);
-      } catch (err) {
-        console.error("Failed to get weather");
-        setWeather(null);
-      }
+    const fetchAndSetWeather = async () => {
+      const fetchedWeather = await fetchWeather();
+      console.log(fetchedWeather);
+      setWeather(fetchedWeather);
     };
 
-    fetchWeather();
+    fetchAndSetWeather();
 
-    const refreshInterval = setInterval(fetchWeather, 30 * 60 * 1000); // every 30 minutes
-
+    const refreshInterval = setInterval(fetchAndSetWeather, 30 * 60 * 1000); // every 30 minutes
     return () => clearInterval(refreshInterval);
   }, []);
-
-  // const formatWeather = () => {
-  //   // set the date to show in EST timezone
-  //   let date = new Date();
-  //   let timezoneOffset = date.getTimezoneOffset();
-  //   let estOffset = 180; // this is the offset for the Eastern Standard Time timezone
-  //   let adjustedTime = new Date(
-  //     date.getTime() + (estOffset + timezoneOffset) * 60 * 1000
-  //   );
-
-  //   // display the date and time in EST timezone
-  //   let options = {
-  //     day: "numeric",
-  //     month: "numeric",
-  //     year: "numeric",
-  //     hour: "numeric",
-  //     minute: "numeric",
-  //     second: "numeric",
-  //     timeZone: "America/Los_Angeles",
-  //   };
-
-  //   let estDateTime = adjustedTime.toLocaleString("en-US", options);
-  //   // console.log(estDateTime); // Output: 2/16/2022, 11:01:20 AM
-  //   let splitDate = estDateTime.split(" ");
-
-  //   return {
-  //     date: splitDate[0],
-  //     time: splitDate[1],
-  //     TOD: splitDate[2],
-  //   };
-  // };
 
   const formatDate = (date) => {
     const options = {
@@ -78,11 +41,10 @@ const HomeWeather = () => {
   };
 
   const getTemperature = () => {
-    if (!weather || !weather.current || !weather.current.temperature_2m)
+    if (!weather || !weather.current || !weather.current.temperature)
       return "--°F";
 
-    let hourlyTemp = `${Math.ceil(weather.current.temperature_2m)}°F`;
-    return hourlyTemp;
+    return `${Math.ceil(weather.current.temperature)}°F`;
   };
 
   return (

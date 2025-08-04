@@ -1,20 +1,24 @@
-import React from "react";
 import NavBar from "../components/homepage/NavBar";
-import HomeWeather from "../components/homepage/HomepageWeather";
 import MoodChart from "../components/userpage/MoodChart";
+import ExtendedWeather from "../components/userpage/extendedWeather";
+import { useContext } from "react";
+import currentUserContext from "../context/current-user-context";
 import "../styles/userpage.css";
+import { useNavigate } from "react-router-dom";
 
 // Dummy user stats
 const userData = {
   username: "johndoe",
   email: "johndoe@email.com",
-  avatar: "/src/assets/images/image.png",
+  avatar:
+    "https://media.designrush.com/inspiration_images/797793/conversions/Real-Madrid-desktop.jpg",
+  // avatar: "/src/assets/images/image.png",
   streakCount: 7,
   journalingGoal: "5 days/week",
   totalEntries: 42,
   journalEntriesThisWeek: 3,
   daysSinceLastJournal: 2,
-  mostTrackedMood: "Happy",
+  mostTrackedMood: "Greatful",
   lastMonthData: false,
   // Mood breakdown for chart
   moodBreakdown: [
@@ -27,15 +31,20 @@ const userData = {
 };
 
 export default function UserPage() {
+  const { currentUser, setCurrentUser } = useContext(currentUserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    navigate("/");
+  };
+
   return (
     <div className="userpage-root">
       <NavBar />
       <div className="userpage-content">
         <div className="userpage-left">
-          <div className="glass-card userpage-weather">
-            {/* <HomeWeather /> */}
-            <h1>Weather Goes Here</h1>
-          </div>
+          <ExtendedWeather />
           {/*  */}
           <div className="glass-card userpage-mood-chart">
             <h3 style={{ textAlign: "center" }}>Your Mood Dashboard</h3>
@@ -69,8 +78,8 @@ export default function UserPage() {
               </div>
               <br />
               <div className="user-credentials">
-                <p className="username">Username: {userData.username}</p>
-                <p className="email">Email: {userData.email}</p>
+                <p className="username">Username: {currentUser?.username}</p>
+                <p className="email">Email: {currentUser?.email}</p>
               </div>
             </div>
             <div className="user-stats">
@@ -80,7 +89,7 @@ export default function UserPage() {
             </div>
             <div className="user-controls">
               <button>Edit Info</button>
-              <button>Logout</button>
+              <button onClick={handleLogout}>Logout</button>
             </div>
           </div>
         </div>
