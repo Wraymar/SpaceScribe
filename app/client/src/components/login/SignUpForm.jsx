@@ -6,6 +6,8 @@ function SignUpForm({
   password,
   setPassword,
   setHasAcc,
+  goal,
+  setGoal,
   handleSubmit,
   error,
 }) {
@@ -39,9 +41,15 @@ function SignUpForm({
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span className="eye-icon">👁</span>
-
           {error && <p className="error">{error}</p>}
+
+          <p>Set a goal to achieve when journaling:</p>
+          <input
+            type="text"
+            placeholder="Goal"
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+          />
 
           <button type="submit" className="login-btn">
             SIGN UP

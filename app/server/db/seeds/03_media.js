@@ -10,8 +10,8 @@ exports.seed = async function (knex) {
       journal_entry_id: 1,
       filename: "morning.jpg",
       cloudinary_url:
-        "https://images.pond5.com/sunrise-sun-rising-over-downtown-085334354_prevstill.jpeg",
-      // cloudinary_key: "morning.jpg",
+        "https://res.cloudinary.com/dxyodbqkr/image/upload/v1753289452/samples/cup-on-a-table.jpg",
+      cloudinary_id: "morning.jpg",
       file_type: "image/jpeg",
       file_size: 204800,
       alt_text: "Sunrise over cityscape",
@@ -23,7 +23,7 @@ exports.seed = async function (knex) {
       filename: "sketch.png",
       cloudinary_url:
         "https://letsdrawtoday.com/wp-content/uploads/2021/06/How-to-Draw-a-Tree-with-Leaves-featured-image.jpg",
-      // cloudinary_key: "sketch.png",
+      cloudinary_id: "sketch.png",
       file_type: "image/png",
       file_size: 102400,
       alt_text: "Sketch of tree",
@@ -34,8 +34,8 @@ exports.seed = async function (knex) {
       journal_entry_id: 3,
       filename: "desk.png",
       cloudinary_url:
-        "https://www.conferencesthatwork.com/wp-content/uploads/2010/08/messy-desk-harryharris-300782460_bafaba2776_o.jpg",
-      // cloudinary_key: "desk.png",
+        "https://res.cloudinary.com/dxyodbqkr/image/upload/v1753289453/main-sample.png",
+      cloudinary_id: "desk.png",
       file_type: "image/png",
       file_size: 95000,
       alt_text: "Messy school desk",

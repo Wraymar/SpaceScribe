@@ -27,6 +27,7 @@ async function uploadImage(req, res) {
       user_id: req.body.user_id,
       filename: req.body.filename,
       cloudinary_url: result.secure_url,
+      cloudinary_id: result.public_id,
       file_type: req.body.file_type,
       alt_text: req.body.alt_text,
       caption: req.body.caption,

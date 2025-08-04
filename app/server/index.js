@@ -12,13 +12,22 @@ const logRoutes = require("./middleware/logRoutes");
 const requireAuth = require("./middleware/requireAuth");
 
 //auth
-const { signup, login, findMe } = require("./controllers/auth_controllers");
+const {
+  signup,
+  login,
+  findMe,
+  logout,
+} = require("./controllers/auth_controllers");
+
+//user
+const getStreak = require("./controllers/get_streak");
 
 //journal entry
 const {
   createJournalEntry,
   getJournalEntryById,
   getAllEntriesByUser,
+  getEntryCountByUser,
   updateJournalEntry,
   deleteJournalEntry,
 } = require("./controllers/journal_entry_controller");
@@ -42,6 +51,9 @@ app.use(logRoutes);
 //listen for this endpoint    use this middleware    pass to controller
 app.post("/api/media/upload", upload.single("image"), uploadImage);
 
+//get streak (user)
+app.get("/api/user/getStreak", requireAuth, getStreak);
+
 //media
 app.get("/api/media/entry/:id", getMediaById);
 
@@ -52,19 +64,15 @@ app.get("/api/weather", getWeather);
 app.get("/api/me", requireAuth, findMe);
 app.post("/api/register", signup);
 app.post("/api/login", login);
+app.post("/api/logout", requireAuth, logout);
 
 //journal entries
 app.post("/api/journal/entries/new", createJournalEntry);
 app.get("/api/journal/entries/:id", getJournalEntryById);
+app.get("/api/user/entries/count", requireAuth, getEntryCountByUser);
 app.get("/api/journal/entries/user/:user_id", getAllEntriesByUser);
 app.patch("/api/journal/entries/:id", updateJournalEntry);
 app.delete("/api/journal/entries/:id", deleteJournalEntry);
-
-//tasks
-// app.post();
-// app.get();
-// app.patch();
-// app.delete();
 
 //EXPRESS STUFF
 //*************************************************************************** */

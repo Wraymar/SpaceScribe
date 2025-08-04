@@ -7,6 +7,7 @@ class Media {
     journal_entry_id,
     filename,
     cloudinary_url,
+    cloudinary_id,
     file_type,
     alt_text,
     caption,
@@ -16,6 +17,7 @@ class Media {
     this.journal_entry_id = journal_entry_id;
     this.filename = filename;
     this.cloudinary_url = cloudinary_url;
+    this.cloudinary_id = cloudinary_id;
     this.file_type = file_type;
     this.alt_text = alt_text;
     this.caption = caption;
@@ -27,13 +29,14 @@ class Media {
     user_id,
     filename,
     cloudinary_url,
+    cloudinary_id,
     file_type = null,
     alt_text = null,
     caption = null,
   }) {
     const query = `
-      INSERT INTO media (journal_entry_id, user_id, filename, cloudinary_url, file_type, alt_text, caption)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO media (journal_entry_id, user_id, filename, cloudinary_url, cloudinary_id, file_type, alt_text, caption)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
       RETURNING *
     `;
     const result = await knex.raw(query, [
@@ -41,6 +44,7 @@ class Media {
       user_id,
       filename,
       cloudinary_url,
+      cloudinary_id,
       file_type,
       alt_text,
       caption,
