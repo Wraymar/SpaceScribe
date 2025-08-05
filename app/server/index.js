@@ -35,6 +35,12 @@ const {
 //media
 const { uploadImage, getMediaById } = require("./controllers/mediaController");
 
+//ai insights
+const {
+  createAiInsight,
+  getAiInsightsByUser,
+} = require("./controllers/ai_insights_controller");
+
 //weather
 const getWeather = require("./services/weather");
 
@@ -73,6 +79,10 @@ app.get("/api/user/entries/count", requireAuth, getEntryCountByUser);
 app.get("/api/journal/entries/user/:user_id", getAllEntriesByUser);
 app.patch("/api/journal/entries/:id", updateJournalEntry);
 app.delete("/api/journal/entries/:id", deleteJournalEntry);
+
+//ai insights
+app.post("/api/ai-insights", requireAuth, createAiInsight);
+app.get("/api/ai-insights/user/:user_id", requireAuth, getAiInsightsByUser);
 
 //EXPRESS STUFF
 //*************************************************************************** */
