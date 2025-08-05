@@ -9,24 +9,10 @@ function LoginForm({
 }) {
   return (
     <>
-      <p>
-        Don't have an account?
-        <span>
-          <button
-            onClick={() => {
-              setHasAcc(false);
-            }}
-            className="switch-type"
-          >
-            Click Here!
-          </button>
-        </span>
-      </p>
-
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -40,11 +26,36 @@ function LoginForm({
           <span className="eye-icon">👁</span>
         </div>
 
+        {/* <div className="form-options">
+          <label className="remember-me">
+            <input type="checkbox" />
+            <span>Remember Me</span>
+          </label>
+          <a href="#" className="forgot-password">
+            Lost your password?
+          </a>
+        </div> */}
+
         {error && <p className="error">{error}</p>}
 
         <button type="submit" className="login-btn">
-          SIGN IN
+          Sign in now
         </button>
+
+        <div className="form-toggle">
+          <p>
+            Don't have an account?
+            <button
+              type="button"
+              onClick={() => {
+                setHasAcc(false);
+              }}
+              className="switch-type"
+            >
+              Sign up
+            </button>
+          </p>
+        </div>
       </form>
     </>
   );

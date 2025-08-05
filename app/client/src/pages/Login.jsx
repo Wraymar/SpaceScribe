@@ -40,33 +40,69 @@ export default function LoginPage() {
 
   return (
     <div className="login-bg">
-      <div className="login-wrapper">
-        <h2>Welcome to SpaceScribe</h2>
-        {hasAcc ? (
-          <LoginForm
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            setHasAcc={setHasAcc}
-            handleSubmit={handleSubmit}
-            error={error}
-          />
-        ) : (
-          <SignUpForm
-            username={username}
-            setUsername={setUsername}
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            setHasAcc={setHasAcc}
-            goal={goal}
-            setGoal={setGoal}
-            handleSubmit={handleSubmit}
-            error={error}
-          />
-        )}
+      <div className="login-container">
+        {/* Left Column - Welcome Section */}
+        <div className="welcome-section">
+          <div className="welcome-content">
+            <h1 className="welcome-title">Welcome Back</h1>
+            <p className="welcome-subtitle">
+              Continue your journey of self-reflection and growth with
+              SpaceScribe
+            </p>
+            {/* <div className="social-icons">
+              <a href="#" className="social-icon">
+                📘
+              </a>
+              <a href="#" className="social-icon">
+                🐦
+              </a>
+              <a href="#" className="social-icon">
+                📷
+              </a>
+              <a href="#" className="social-icon">
+                📺
+              </a>
+            </div> */}
+          </div>
+        </div>
+
+        {/* Right Column - Form Section */}
+        <div className="form-section">
+          <div className="form-wrapper">
+            <h2 className="form-title">{hasAcc ? "Sign in" : "Sign up"}</h2>
+            {hasAcc ? (
+              <LoginForm
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                setHasAcc={setHasAcc}
+                handleSubmit={handleSubmit}
+                error={error}
+              />
+            ) : (
+              <SignUpForm
+                username={username}
+                setUsername={setUsername}
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                setHasAcc={setHasAcc}
+                goal={goal}
+                setGoal={setGoal}
+                handleSubmit={handleSubmit}
+                error={error}
+              />
+            )}
+            <div className="terms-privacy">
+              <p>
+                By continuing, you agree to our Terms of Service and Privacy
+                Policy
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

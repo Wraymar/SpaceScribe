@@ -13,24 +13,16 @@ function SignUpForm({
 }) {
   return (
     <>
-      <button
-        onClick={() => {
-          setHasAcc(true);
-        }}
-        className="switch-type"
-      >
-        Back to Login
-      </button>
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          type="text"
-          placeholder="Email"
+          type="email"
+          placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -41,19 +33,38 @@ function SignUpForm({
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {error && <p className="error">{error}</p>}
+          <span className="eye-icon">👁</span>
+        </div>
 
-          <p>Set a goal to achieve when journaling:</p>
+        <div className="goal-container">
+          <p className="goal-label">Set a goal to achieve when journaling:</p>
           <input
             type="text"
             placeholder="Goal"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
           />
+        </div>
 
-          <button type="submit" className="login-btn">
-            SIGN UP
-          </button>
+        {error && <p className="error">{error}</p>}
+
+        <button type="submit" className="login-btn">
+          Sign up now
+        </button>
+
+        <div className="form-toggle">
+          <p>
+            Already have an account?
+            <button
+              type="button"
+              onClick={() => {
+                setHasAcc(true);
+              }}
+              className="switch-type"
+            >
+              Sign in
+            </button>
+          </p>
         </div>
       </form>
     </>
