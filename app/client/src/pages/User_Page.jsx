@@ -104,9 +104,10 @@ export default function UserPage() {
         <div className="glass-card userpage-right">
           <div className="user-info-card">
             <div className="user-info-header">
-              <div className="user-avatar">
+              {/* <div className="user-avatar">
                 <img src={userData.avatar} alt="User Avatar" />
-              </div>
+              </div> */}
+              <h1 className="glass-text welcome-txt">Welcome Back!</h1>
               <br />
               <div className="user-credentials">
                 <p className="username">Username: {currentUser?.username}</p>
@@ -120,8 +121,10 @@ export default function UserPage() {
               <p>Total Entries: {totalEntries}</p>
             </div>
             <div className="user-controls">
-              <button>Edit Info</button>
-              <button onClick={handleLogout}>Logout</button>
+              {/* <button>Edit Info</button> */}
+              <button onClick={handleLogout} className="btn">
+                Logout
+              </button>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import ReactModal from "react-modal";
+import axios from "axios";
 import "../../styles/modal.css";
 
 // Set the app element for accessibility
@@ -15,6 +16,16 @@ function PreviewModal({ isOpen, setIsOpen, selectedEntry, imageUrl }) {
 
   //   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`/api/journal/${selectedEntry.id}`);
+      setIsOpen(false); // Close modal after deletion
+      window.location.reload(); // Refresh entries list (optional)
+    } catch (error) {
+      console.error("Error deleting entry:", error);
+    }
+  };
 
   return (
     <div>
@@ -45,7 +56,7 @@ function PreviewModal({ isOpen, setIsOpen, selectedEntry, imageUrl }) {
             )}
           </div>
 
-          <div className="modal-preview-date">
+          <div className="glass-text modal-preview-date">
             <h3>{day}</h3>
             <p>
               {month}, {dayNum}
@@ -62,6 +73,16 @@ function PreviewModal({ isOpen, setIsOpen, selectedEntry, imageUrl }) {
 
           <p>{selectedEntry ? selectedEntry.content : null}</p>
         </div>
+        <br></br>
+        <br></br>
+        {selectedEntry && (
+          <button
+            className="modal-delete-button"
+            onClick={() => handleDelete()}
+          >
+            Delete Entry
+          </button>
+        )}
       </ReactModal>
     </div>
   );

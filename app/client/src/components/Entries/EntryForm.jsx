@@ -30,10 +30,10 @@ function EntryForm({
     <>
       <form id="entry-form" name="entry-form" onSubmit={handleSubmit}>
         <div className="date-header">
-          <h1>{date[0]}</h1>
-          <h2>
+          <h1 className="glass-text">{date[0]}</h1>
+          <h1 className="glass-text">
             {date[1]} {date[2]}
-          </h2>
+          </h1>
         </div>
         <div className="form-group">
           <input
