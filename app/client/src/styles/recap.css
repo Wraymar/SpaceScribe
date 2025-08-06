@@ -30,14 +30,28 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+
+.streak-stat-card {
+  padding: var(--spacing-lg);
+  width: 100%;
+  height: 50%;
+  text-align: center;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: bold;
   color: var(--accent-orange);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: "20px";
   text-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
+  margin-top: "20px";
 }
 
 .stat-label {
@@ -47,24 +61,11 @@
   letter-spacing: 0.5px;
   font-weight: 500;
   margin-bottom: var(--spacing-sm);
-}
-
-/* Recap Buttons */
-.recap-btn {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: none;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  min-width: 80px;
+  margin-top: "20px";
 }
 
 .copy-btn {
-  background: linear-gradient(135deg, var(--accent-orange), var(--accent-warm));
+  /* background: linear-gradient(135deg, var(--accent-orange), var(--accent-warm)); */
   color: white;
   box-shadow: var(--shadow-sm);
 }
@@ -75,7 +76,7 @@
 }
 
 .save-btn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  /* background: linear-gradient(135deg, #667eea, #764ba2); */
   color: white;
   box-shadow: var(--shadow-sm);
 }
@@ -85,7 +86,7 @@
   box-shadow: var(--shadow-md), 0 0 20px rgba(102, 126, 234, 0.3);
 }
 
-.recap-btn:disabled {
+.btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
@@ -94,17 +95,15 @@
 /* Access Notice */
 .access-notice {
   margin-top: var(--spacing-md);
-  padding: var(--spacing-sm);
-  background: rgba(255, 107, 53, 0.1);
+  padding: 0.2rem;
+  background: rgba(200, 200, 200, 0.184);
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  border: 1px solid rgba(138, 136, 135, 0.2);
 }
 
 .access-notice p {
   font-size: 0.75rem;
-  color: var(--accent-orange);
   margin: 0;
-  text-align: center;
 }
 
 /* Weekly Reflection */
@@ -118,15 +117,18 @@
 }
 
 .weekly-reflection h3 {
-  color: var(--text-primary);
-  font-size: 1.5rem;
+  /* color: var(--text-primary); */
+  font-size: 3rem;
   font-weight: 600;
   margin-bottom: var(--spacing-lg);
+  text-align: center;
 }
 
 .reflection-content {
   color: var(--text-secondary);
   line-height: 1.7;
+  display: flex;
+  flex-direction: column;
 }
 
 .reflection-content p {
@@ -137,19 +139,20 @@
 /* Date Range */
 .date-range {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.7rem;
   color: var(--accent-orange);
   font-weight: 600;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xs);
   padding: var(--spacing-sm);
-  background: rgba(255, 107, 53, 0.1);
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  /* background: rgba(245, 242, 241, 0.1); */
+  /* border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.286); */
+  /* width: 20rem; */
+  align-self: center;
 }
 
 /* Entries Container */
 .entries-container {
-  margin-top: var(--spacing-lg);
   height: 300px;
   overflow: hidden;
 }
@@ -173,19 +176,19 @@
 }
 
 .entries-scroll::-webkit-scrollbar-thumb {
-  background: var(--accent-orange);
+  background: var(--accent-grey);
   border-radius: 4px;
 }
 
 .entries-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-warm);
+  background: var(--accent-grey);
 }
 
 /* Entry Cards */
 .entry-card {
   flex-shrink: 0;
-  width: 150px;
-  height: 200px;
+  width: 9rem;
+  height: 12rem;
   border-radius: var(--radius-md);
   overflow: hidden;
   position: relative;
@@ -210,7 +213,7 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(80, 80, 80, 0.432);
   color: white;
   padding: 4px 8px;
   border-radius: var(--radius-sm);
@@ -225,7 +228,7 @@
   width: 100%;
   height: 33%;
   /* backdrop-filter: blur(6px); */
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.651);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;

@@ -30,12 +30,21 @@ function CalendarPreview({ entry, imageUrl, setSelectedEntry, setIsOpen }) {
     <div className="glass-card calender-preview">
       <div className="top-div">
         <div className="preview-polaroid-container">
-          <img
+          {imageUrl ? (
+            <img
+              className="polaroid-frame"
+              //src="https://i.pinimg.com/736x/65/bc/13/65bc1387f96fd51c6767d63f218aa5ca.jpg"
+              src="https://storage.needpix.com/rsynced_images/polaroid-2872834_1280.png"
+              alt="Polaroid frame"
+            />
+          ) : null}
+          {/* <img
             className="polaroid-frame"
             //src="https://i.pinimg.com/736x/65/bc/13/65bc1387f96fd51c6767d63f218aa5ca.jpg"
             src="https://storage.needpix.com/rsynced_images/polaroid-2872834_1280.png"
             alt="Polaroid frame"
-          />
+          /> */}
+
           {imageUrl && (
             <img
               className="polaroid-photo"

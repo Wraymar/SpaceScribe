@@ -61,6 +61,7 @@ export default function WeeklyRecap() {
             return entryDate >= dateRange.start && entryDate <= dateRange.end;
           });
 
+          console.log(weekEntries);
           setEntries(weekEntries);
         }
       } catch (error) {

@@ -16,24 +16,25 @@ function WeekReflection({ entries, isSunday, dateRange }) {
       day: "numeric",
     });
 
-    console.log("StartStr: ", startStr, "EndStr ", endStr);
-    console.log(startStr - endStr);
-
     return `${startStr} - ${endStr}`;
   };
 
   return (
     <div className="glass-card weekly-reflection">
-      <h3>Welcome to weekly recap</h3>
+      <h3>
+        <span className="glass-text">Welcome to weekly recap</span>
+      </h3>
       <div className="reflection-content">
         <p>
           {isSunday
             ? "Here is a list of your entries this week. To get an insight recap of what you wrote, click copy entry data, paste it into an AI model. For best results, do not edit the text."
-            : "Here is a list of your entries for the current week. Weekly recap functionality (copy/save entry data) is only available on Sundays."}
+            : "Here is a list of your entries for the current week. Weekly recap functionality (copy/save entry data) is available on Sundays only."}
         </p>
 
         {dateRange.start && dateRange.end && (
-          <div className="date-range">{formatDateRange()}</div>
+          <div className="date-range">
+            <span className="glass-text">{formatDateRange()}</span>
+          </div>
         )}
 
         <div className="entries-container">
@@ -46,7 +47,7 @@ function WeekReflection({ entries, isSunday, dateRange }) {
                     style={{
                       backgroundImage: entry.image_url
                         ? `url(${entry.image_url})`
-                        : "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                        : "linear-gradient(135deg, #4545456c 0%, #ffffff66 100%)",
                     }}
                   >
                     <div className="date-badge">

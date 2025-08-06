@@ -39,6 +39,10 @@
   align-self: center; */
 }
 
+.nav-wrapper img {
+  width: 180px;
+}
+
 .nav-wrapper h2 {
   padding-left: 10px;
   font-size: 1.75rem;
