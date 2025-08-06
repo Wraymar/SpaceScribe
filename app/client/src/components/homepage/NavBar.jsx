@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import AccountDeet from "./AccountDeet";
 import currentUserContext from "../../context/current-user-context";
 
+import logo from "../../assets/images/SpaceScribeLogo2.png";
+
 function NavBar() {
   const { currentUser } = useContext(currentUserContext);
   const location = useLocation();
@@ -11,8 +13,9 @@ function NavBar() {
   return (
     <>
       <div className="glass-card nav-wrapper">
-        <Link to="/homepage" style={{ textDecoration: "none" }}>
-          <h2>SpaceScribe!</h2>
+        <Link to="/homepage" className="logo">
+          {/* <h2>SpaceScribe!</h2> */}
+          <img src={logo} />
         </Link>
 
         <div className="nav-links">

@@ -7,7 +7,7 @@ const COOKIE_OPTIONS = {
   //	Use strict only if you want very strict CSRF protection and don’t mind breaking some external navigation flows.
   sameSite: "lax",
   //maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-  maxAge: 60 * 60 * 1000, // 1 hr
+  maxAge: 24 * 60 * 60 * 1000, // 1 day
   path: "/",
 };
 
