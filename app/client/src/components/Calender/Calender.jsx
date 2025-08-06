@@ -5,7 +5,7 @@ import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../../styles/custom-calender.css";
 
-function Calender({ onDateSelect }) {
+function Calender({ onDateSelect, tileClassName }) {
   const [value, setValue] = useState(new Date());
 
   const handleChange = (date) => {
@@ -18,17 +18,18 @@ function Calender({ onDateSelect }) {
       <Calendar
         onChange={handleChange}
         value={value}
-        tileClassName={({ date }) => {
-          const today = new Date();
-          if (
-            date.getDate() === today.getDate() &&
-            date.getMonth() === today.getMonth() &&
-            date.getFullYear() === today.getFullYear()
-          ) {
-            return "calendar-day current-day";
-          }
-          return "calendar-day";
-        }}
+        // tileClassName={({ date }) => {
+        //   const today = new Date();
+        //   if (
+        //     date.getDate() === today.getDate() &&
+        //     date.getMonth() === today.getMonth() &&
+        //     date.getFullYear() === today.getFullYear()
+        //   ) {
+        //     return "calendar-day current-day";
+        //   }
+        //   return "calendar-day";
+        // }}
+        tileClassName={tileClassName}
       />
     </div>
   );

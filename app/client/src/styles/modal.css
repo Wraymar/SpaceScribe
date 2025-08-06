@@ -5,7 +5,9 @@
 }
 
 .modal-polaroid-photo {
-  width: 350px;
+  padding: 1rem;
+  width: 19rem;
+  height: auto;
 }
 
 .modal-overlay {
@@ -53,7 +55,7 @@
   display: flex;
   flex-direction: column;
   font-size: 40px;
-  color: #a20404;
+  color: #c5c5c5;
   height: inherit;
 }
 

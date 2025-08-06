@@ -1,7 +1,9 @@
 .react-calendar {
   background: transparent;
   border: none;
-  width: 100%;
+  width: 35rem;
+  height: auto;
+  align-self: center;
 }
 
 .react-calendar__tile {
@@ -13,18 +15,19 @@
   cursor: pointer;
   transition: all var(--transition-fast);
   font-weight: 500;
+  font-size: 1rem;
   color: var(--text-primary);
   /* border: 1px solid transparent; */
   border: 1px solid rgba(255, 255, 255, 0.051) !important;
 }
 
 .react-calendar__tile:hover {
-  background: rgba(128, 128, 128, 0.188) !important;
-  /* transform: scale(1.05); */
+  background: rgba(255, 255, 255, 0.073) !important;
+  transform: none;
 }
 
 .calendar-day.current-day {
-  background: var(--accent-orange) !important;
+  background: var(--accent-grey) !important;
   color: white !important;
   box-shadow: var(--shadow-glow);
 }
@@ -70,48 +73,40 @@ abbr[title] {
   text-decoration: none;
 }
 
-/* can be left commented */
-/* .react-calendar__viewContainer {
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
-  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
-  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
-  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
-  border-radius: 30px;
-} */
-/* .react-calendar__view_weekdays {
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.842);
-  border-right: 0.5px solid rgba(216, 215, 215, 0.98);
-  border-bottom: 0.4px solid rgba(210, 209, 209, 0.904);
-  border-left: 0.08px solid rgba(253, 253, 253, 0.752);
-  border-radius: 50px;
+.calendar-day.has-entry {
+  border-color: var(--accent-yellow);
+  /* background: rgb(255, 214, 79); */
 }
 
-.react-calendar__view_days {
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.842);
-  border-right: 0.5px solid rgba(216, 215, 215, 0.98);
-  border-bottom: 0.4px solid rgba(210, 209, 209, 0.904);
-  border-left: 0.08px solid rgba(253, 253, 253, 0.752);
-  border-radius: 50px;
-} */
+.react-calendar__tile.has-entry {
+  position: relative;
+}
 
-/* .react-calendar__navigation__arrow {
-  border: 0.5px solid rgba(255, 255, 255, 0.973) !important;
-  border-top: 1.5px solid rgba(255, 255, 255, 0.16) !important;
-  border-right: 0.5px solid rgba(216, 215, 215, 0.16) !important;
-  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16) !important;
-  border-left: 0.08px solid rgba(253, 253, 253, 0.16) !important;
-  border-radius: 30px;
-  background-color: rgba(198, 195, 195, 0.061) !important;
-} */
+.react-calendar__tile.has-entry::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-yellow);
+  border-radius: 50%;
+}
 
-/* .react-calendar__navigation__prev2-button {
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
-  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
-  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
-  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
-  border-radius: 30px;
-} */
+.react-calendar__tile--active {
+  background: #343434;
+  color: white;
+}
+
+/* Remove the default blue highlight */
+.react-calendar__tile--active,
+.react-calendar__tile:focus {
+  background: rgb(93, 92, 92) !important; /* your gray color */
+  color: white !important;
+  outline: none !important;
+}
+
+.react-calendar__tile--now {
+  background: rgb(180, 180, 180);
+}

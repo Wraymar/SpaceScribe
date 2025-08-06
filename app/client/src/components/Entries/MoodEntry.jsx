@@ -1,7 +1,7 @@
 function MoodEntry({ emojis, username, mood, setMood }) {
   return (
     <>
-      <h3>Hi {username}!</h3>
+      <h3 className="glass-text">Hi {username}!</h3>
       <p>Which emoji describes your mood?</p>
       <div className="emoji-grid">
         {emojis.map(([icon, label]) => (

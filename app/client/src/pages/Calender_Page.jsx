@@ -81,21 +81,32 @@ export default function CalenderPage() {
     <>
       <NavBar />
       <div className="calender-content">
-        <div className="calender-controls">
-          <div className="polaroid-scroll-container">
-            {entriesForDate.map((entry) => (
-              <CalendarPreview
-                key={entry.id}
-                entry={entry}
-                imageUrl={mediaMap[entry.id] || null}
-                setSelectedEntry={setSelectedEntry}
-                setIsOpen={setIsOpen}
-              />
-            ))}
-          </div>
+        {/* <div className="calender-controls"> */}
+        <div className="polaroid-scroll-container">
+          {entriesForDate.map((entry) => (
+            <CalendarPreview
+              key={entry.id}
+              entry={entry}
+              imageUrl={mediaMap[entry.id] || null}
+              setSelectedEntry={setSelectedEntry}
+              setIsOpen={setIsOpen}
+            />
+          ))}
         </div>
+        {/* </div> */}
         <div className="glass-card calendar-container">
-          <Calender onDateSelect={setSelectedDate} />
+          {/* <Calender onDateSelect={setSelectedDate} /> */}
+          <Calender
+            onDateSelect={setSelectedDate}
+            tileClassName={({ date }) => {
+              const dateStr = date.toISOString().split("T")[0];
+              return entries.some((entry) =>
+                entry.created_at.startsWith(dateStr)
+              )
+                ? "has-entry"
+                : "";
+            }}
+          />
         </div>
       </div>
       {selectedEntry && (

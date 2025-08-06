@@ -30,7 +30,7 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 20px rgba(255, 107, 53, 0.3);
+  --shadow-glow: 0 0 20px rgba(227, 227, 227, 0.612);
 
   /* Spacing */
   --spacing-xs: 0.25rem;
@@ -44,7 +44,7 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-xl: 30px;
 
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -208,13 +208,15 @@ p {
 
 .form-input:focus {
   outline: none;
-  border-color: var(--accent-orange);
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+  border-color: var(--accent-grey);
+  box-shadow: 0 0 0 3px rgba(212, 212, 212, 0.1);
   background: rgba(255, 255, 255, 0.15);
 }
 
 .form-input::placeholder {
-  color: var(--text-muted);
+  color: rgb(203, 202, 202);
+  font-size: 1rem;
+  /* color: var(--text-muted); */
 }
 
 /* Utility Classes */
