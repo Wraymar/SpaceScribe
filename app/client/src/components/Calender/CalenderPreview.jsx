@@ -27,24 +27,6 @@ function CalendarPreview({ entry, imageUrl, setSelectedEntry, setIsOpen }) {
   }
 
   return (
-    /*
-       <div className="glass-card calender-preview">
-      <div
-        className="entry-background"
-        style={{
-          backgroundImage: imageUrl
-            ? `url(${imageUrl})`
-            : "linear-gradient(135deg, #4545456c 0%, #ffffff66 100%)",
-        }}
-        onClick={openModal} // ✅ Clicking opens modal
-      >
-        <div className="date-badge">{`${month} ${dayNum}`}</div>
-        <div className="blur-section">
-          <div className="entry-title">{entry.title}</div>
-          <button className="btn-secondary">View</button>
-        </div>
-      </div>
-    </div> */
     <div className="glass-card calender-preview" onClick={openModal}>
       <div
         className="top-div"
@@ -54,7 +36,7 @@ function CalendarPreview({ entry, imageUrl, setSelectedEntry, setIsOpen }) {
             : "linear-gradient(135deg, #4545456c 0%, #ffffff66 100%)",
         }}
       >
-        <div className="date-badge">{`${month} ${dayNum}`}</div>
+        <div className="date-info">{`${month} ${dayNum}`}</div>
       </div>
       <div className="bottom-div">
         <p>

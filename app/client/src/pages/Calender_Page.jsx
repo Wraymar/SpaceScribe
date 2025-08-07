@@ -18,33 +18,45 @@ export default function CalenderPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
-  const selectedDateStr = selectedDate.toISOString().split("T")[0]; // 'YYYY-MM-DD'
+  // const selectedDateStr = selectedDate.toISOString().split("T")[0]; // 'YYYY-MM-DD'
 
-  //Use Memo helps to not constantly filter unnecessarily
-  //Since
+  // //Use Memo helps to not constantly filter unnecessarily
+  // //Since
+  // const entriesForDate = useMemo(() => {
+  //   return entries.filter((entry) =>
+  //     entry.created_at.startsWith(selectedDateStr)
+  //   );
+  // }, [entries, selectedDateStr]);
+
+  const selectedDateStr = selectedDate.toLocaleDateString("en-CA"); // 'YYYY-MM-DD' in local time
+
   const entriesForDate = useMemo(() => {
-    return entries.filter((entry) =>
-      entry.created_at.startsWith(selectedDateStr)
-    );
+    return entries.filter((entry) => {
+      const entryDateStr = new Date(entry.created_at).toLocaleDateString(
+        "en-CA"
+      );
+      return entryDateStr === selectedDateStr;
+    });
   }, [entries, selectedDateStr]);
 
-  useEffect(() => {
-    const fetchEntries = async () => {
-      try {
-        const response = await axios.get(
-          `/api/journal/entries/user/${currentUser.id}`
-        );
-        if (response.data) {
-          //console.log(response.data);
-          setEntries(response.data);
-        }
-      } catch (err) {
-        console.log("failed to fetch entries");
+  const fetchEntries = async () => {
+    try {
+      const response = await axios.get(
+        `/api/journal/entries/user/${currentUser.id}`
+      );
+      if (response.data) {
+        setEntries(response.data);
       }
-    };
+    } catch (err) {
+      console.log("failed to fetch entries");
+    }
+  };
 
-    fetchEntries();
-  }, []);
+  useEffect(() => {
+    if (currentUser?.id) {
+      fetchEntries();
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     const fetchAllMedia = async () => {
@@ -94,7 +106,7 @@ export default function CalenderPage() {
           ))}
         </div>
         {/* </div> */}
-        <div className="glass-card calendar-container">
+        <div className="calendar-container">
           {/* <Calender onDateSelect={setSelectedDate} /> */}
           <Calender
             onDateSelect={setSelectedDate}

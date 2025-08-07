@@ -1,6 +1,7 @@
 import ReactModal from "react-modal";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosConfig";
 import "../../styles/modal.css";
+import noImage from "../../assets/images/noImage.jpg";
 
 // Set the app element for accessibility
 ReactModal.setAppElement("#root");
@@ -19,8 +20,8 @@ function PreviewModal({ isOpen, setIsOpen, selectedEntry, imageUrl }) {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/journal/${selectedEntry.id}`);
-      setIsOpen(false); // Close modal after deletion
+      await axiosInstance.delete(`/api/journal/entries/${selectedEntry.id}`);
+      setIsOpen(() => false); // Close modal after deletion
       window.location.reload(); // Refresh entries list (optional)
     } catch (error) {
       console.error("Error deleting entry:", error);
@@ -37,51 +38,48 @@ function PreviewModal({ isOpen, setIsOpen, selectedEntry, imageUrl }) {
         className="glass-card modal-content"
         overlayClassName={"modal-overlay"}
       >
-        {/* <h2>Modal Content</h2>
-        <p>This is the content of the modal.</p>
-        <button onClick={closeModal}>Close Modal</button> */}
-        <div className="modal-top-div">
-          <div>
-            {/* <img
-              className="modal-polaroid-frame"
-              src="https://storage.needpix.com/rsynced_images/polaroid-2872834_1280.png"
-              alt="Polaroid frame"
-            /> */}
-            {imageUrl && (
-              <img
-                className="modal-polaroid-photo"
-                src={imageUrl}
-                alt="Uploaded entry"
-              />
-            )}
+        <div className="modal-body">
+          <div className="modal-top-div">
+            <div>
+              {imageUrl && imageUrl ? (
+                <img
+                  className="modal-polaroid-photo"
+                  src={imageUrl}
+                  alt="Uploaded entry"
+                />
+              ) : (
+                <img src={noImage}></img>
+              )}
+            </div>
+
+            <div className="glass-text modal-preview-date">
+              <h3>{day}</h3>
+              <p>
+                {month} {dayNum}, {year}
+              </p>
+            </div>
           </div>
 
-          <div className="glass-text modal-preview-date">
-            <h3>{day}</h3>
-            <p>
-              {month}, {dayNum}
-            </p>
-            <p>{year}</p>
+          <div className="content-details">
+            <h2>
+              {/* <strong>Title: </strong> */}
+              <strong>{selectedEntry ? selectedEntry.title : null}</strong>
+            </h2>
+
+            <p>{selectedEntry ? selectedEntry.content : null}</p>
           </div>
-        </div>
-
-        <div>
-          <p>
-            <strong>Title: </strong>
-            {selectedEntry ? selectedEntry.title : null}
-          </p>
-
-          <p>{selectedEntry ? selectedEntry.content : null}</p>
         </div>
         <br></br>
         <br></br>
         {selectedEntry && (
-          <button
-            className="modal-delete-button"
-            onClick={() => handleDelete()}
-          >
-            Delete Entry
-          </button>
+          <div className="modal-delete-wrapper">
+            <button
+              className="btn modal-delete-button"
+              onClick={() => handleDelete()}
+            >
+              Delete Entry
+            </button>
+          </div>
         )}
       </ReactModal>
     </div>
