@@ -37,6 +37,7 @@
   justify-content: center;
   padding: var(--spacing-2xl);
   position: relative;
+  background: linear-gradient(135deg, #adadad85 0%, #040404 100%);
 }
 
 .welcome-content {
@@ -46,7 +47,7 @@
 }
 
 .welcome-title {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
   margin-bottom: var(--spacing-lg);
   letter-spacing: -1px;
@@ -61,7 +62,7 @@
   opacity: 0.9;
   font-weight: 400;
   text-align: start;
-  color: #dcdcdc;
+  color: #ebeaea;
 }
 
 .social-icons {

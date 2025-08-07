@@ -59,6 +59,10 @@
   --glass-backdrop: blur(2.7px);
   --glass-webkit-backdrop-filter: blur(2.7px);
   --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+
+  /* Glass Colors */
+  --blue-glass-bg: rgba(17, 38, 61, 0.564); /* daytime */
+  --purple-glass-bg: rgba(17, 24, 61, 0.564); /* night */
 }
 
 body {
@@ -114,13 +118,13 @@ p {
 
 /* Glass Effect Cards */
 .glass-card {
-  background: rgba(128, 128, 128, 0.3);
+  background-color: var(--blue-glass-bg);
+  /* -webkit-backdrop-filter: blur();
+  backdrop-filter: blur(2px); */
+  /* background: rgba(83, 83, 83, 0.283); */
   /* BackDrop filter causes lag */
-  /* -webkit-backdrop-filter: blur(); */
-  /* backdrop-filter: blur(2px); */
-  background: rgba(83, 83, 83, 0.283);
-  /* backdrop-filter: blur(2.7px) saturate(180%);
-  -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter) saturate(100%); */
+  /* backdrop-filter: blur(2.7px) saturate(180%); */
+  /* -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter) saturate(100%); */
   border: 0.5px solid rgba(255, 255, 255, 0.1);
   border-top: 1.5px solid rgba(255, 255, 255, 0.16);
   border-right: 0.5px solid rgba(216, 215, 215, 0.16);

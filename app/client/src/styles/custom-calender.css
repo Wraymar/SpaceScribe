@@ -2,8 +2,17 @@
   background: transparent;
   border: none;
   width: 35rem;
-  height: auto;
+  height: 31.4rem;
   align-self: center;
+  border: #ffffff54 solid 1px;
+  padding: 2rem;
+  overflow-y: scroll;
+  /* background-color: #0f0f0f4f; */
+  background-color: rgba(0, 0, 0, 0.579);
+}
+
+.react-calendar::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
 }
 
 .react-calendar__tile {
@@ -32,6 +41,7 @@
   box-shadow: var(--shadow-glow);
 }
 
+/* .react-calendar__navigation, */
 .react-calendar__navigation {
   border: 0.5px solid rgba(255, 255, 255, 0.1);
   border-top: 1.5px solid rgba(255, 255, 255, 0.16);
@@ -39,30 +49,19 @@
   border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
   border-left: 0.08px solid rgba(253, 253, 253, 0.16);
   border-radius: 50px;
-  background-color: rgba(128, 128, 128, 0.188) !important;
-}
-
-.react-calendar__navigation__prev-button {
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
-  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
-  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
-  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
-  border-radius: 30px;
-}
-
-.react-calendar__navigation__next-button {
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-top: 1.5px solid rgba(255, 255, 255, 0.16);
-  border-right: 0.5px solid rgba(216, 215, 215, 0.16);
-  border-bottom: 0.4px solid rgba(210, 209, 209, 0.16);
-  border-left: 0.08px solid rgba(253, 253, 253, 0.16);
-  border-radius: 30px;
-  width: 50px;
+  padding: 0.5rem;
+  background-color: rgba(128, 128, 128, 0.812);
+  color: white;
 }
 
 .react-calendar__navigation button {
-  width: 150px !important;
+  width: 5rem !important;
+  color: #ffffff;
+}
+
+.react-calendar__navigation button:hover {
+  background: none !important;
+  color: rgb(20, 20, 20) !important;
 }
 
 .react-calendar__month-view__weekdays {

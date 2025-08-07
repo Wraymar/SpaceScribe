@@ -44,7 +44,7 @@ export default function LoginPage() {
         {/* Left Column - Welcome Section */}
         <div className="welcome-section">
           <div className="welcome-content">
-            <h1 className="welcome-title">Welcome Back</h1>
+            <h1 className="glass-text welcome-title">Welcome Back</h1>
             <p className="welcome-subtitle">
               Continue your journey of self-reflection and growth with
               SpaceScribe
