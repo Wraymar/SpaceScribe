@@ -18,17 +18,6 @@ function Calender({ onDateSelect, tileClassName }) {
       <Calendar
         onChange={handleChange}
         value={value}
-        // tileClassName={({ date }) => {
-        //   const today = new Date();
-        //   if (
-        //     date.getDate() === today.getDate() &&
-        //     date.getMonth() === today.getMonth() &&
-        //     date.getFullYear() === today.getFullYear()
-        //   ) {
-        //     return "calendar-day current-day";
-        //   }
-        //   return "calendar-day";
-        // }}
         tileClassName={tileClassName}
       />
     </div>

@@ -17,7 +17,7 @@ export const getTimeOfDay = () => {
   }
   // Night: 8:00 PM - 5:00 AM
   else {
-    timeOfDay = "night";
+    timeOfDay = "test";
   }
   // console.log([timeOfDay, hour]);
   return timeOfDay;
@@ -32,6 +32,9 @@ export const getBackgroundImage = (timeOfDay) => {
     case "sunrise":
     case "sunset":
       return "/src/assets/images/mtn.jpg";
+    case "test":
+      return "/src/assets/images/lofi.jpg";
+    // return "/src/assets/images/editedLofi.png";
     default:
       return "/src/assets/images/lofiStudy.jpg";
   }
