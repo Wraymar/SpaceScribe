@@ -37,7 +37,7 @@
   justify-content: center;
   padding: var(--spacing-2xl);
   position: relative;
-  background: linear-gradient(135deg, #adadad 0%, #040404 100%);
+  background: linear-gradient(135deg, #adadad85 0%, #040404 100%);
 }
 
 .welcome-content {
