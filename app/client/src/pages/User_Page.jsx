@@ -14,12 +14,13 @@ const userData = {
   avatar:
     "https://media.designrush.com/inspiration_images/797793/conversions/Real-Madrid-desktop.jpg",
   // avatar: "/src/assets/images/image.png",
-  streakCount: 7,
+  streakCount: 3,
   journalingGoal: "5 days/week",
-  totalEntries: 42,
-  journalEntriesThisWeek: 3,
-  daysSinceLastJournal: 2,
-  mostTrackedMood: "Greatful",
+  totalEntries: 12,
+  journalEntriesThisWeek: 9,
+  longest: 3,
+  daysSinceLastJournal: 0,
+  mostTrackedMood: "Tired",
   lastMonthData: false,
   // Mood breakdown for chart
   moodBreakdown: [
@@ -82,7 +83,8 @@ export default function UserPage() {
             <MoodChart data={userData.moodBreakdown} />
             <div className="mood-dashboard-stats">
               <div>
-                Most Tracked: <b>{userData.mostTrackedMood}</b>
+                Your most tracked mood this week is:{" "}
+                <b>{userData.mostTrackedMood}</b>
               </div>
               {/* <div>
                 Last Month:{" "}
@@ -115,10 +117,14 @@ export default function UserPage() {
               </div>
             </div>
             <div className="user-stats">
-              <p>Streak Count: {streakData.current} days</p>
+              {/* <p>Streak Count: {streakData.current} days</p>
               <p>Longest Streak: {streakData.longest} days</p>
               <p>Journaling Goal: {currentUser?.goal}</p>
-              <p>Total Entries: {totalEntries}</p>
+              <p>Total Entries: {totalEntries}</p> */}
+              <p>Streak Count: {userData.streakCount} days</p>
+              <p>Longest Streak: {userData.longest} days</p>
+              <p>Journaling Goal: {currentUser?.goal}</p>
+              <p>Total Entries: {userData.totalEntries}</p>
             </div>
             <div className="user-controls">
               {/* <button>Edit Info</button> */}

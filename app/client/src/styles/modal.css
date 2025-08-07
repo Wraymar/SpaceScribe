@@ -24,10 +24,8 @@
 }
 
 .modal-delete-wrapper {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 10;
+  align-self: flex-start;
+  margin: 1rem;
 }
 
 .modal-content {
@@ -37,7 +35,7 @@
   position: relative;
   height: 40rem;
   width: 40rem;
-  overflow-y: hidden; /* stop inner scroll */
+  overflow-y: auto; /* allow internal scroll without losing button */
 }
 
 .modal-top-div {
