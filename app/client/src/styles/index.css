@@ -114,10 +114,10 @@ p {
 
 /* Glass Effect Cards */
 .glass-card {
-  background: rgba(128, 128, 128, 0.3);
+  background-color: rgba(0, 0, 0, 0.579);
   /* -webkit-backdrop-filter: blur();
   backdrop-filter: blur(2px); */
-  background: rgba(83, 83, 83, 0.283);
+  /* background: rgba(83, 83, 83, 0.283); */
   /* BackDrop filter causes lag */
   /* backdrop-filter: blur(2.7px) saturate(180%); */
   /* -webkit-backdrop-filter: blur(--glass-webkit-backdrop-filter) saturate(100%); */
