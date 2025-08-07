@@ -5,9 +5,9 @@
 }
 
 .modal-polaroid-photo {
-  padding: 1rem;
   width: 19rem;
   height: auto;
+  align-self: start;
 }
 
 .modal-overlay {
@@ -16,51 +16,61 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(3, 3, 3, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-.modal-content {
-  /* background-color: rgb(123, 123, 116); */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(219, 219, 219, 0.192);
-  position: relative;
-  max-width: 800px;
-  max-height: 600px;
-  height: 90%;
-  width: 90%;
-  overflow-y: scroll;
+.modal-delete-wrapper {
+  align-self: flex-start;
+  margin: 1rem;
 }
 
-.modal-close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* separates top and bottom */
+  position: relative;
+  height: 40rem;
+  width: 40rem;
+  overflow-y: auto; /* allow internal scroll without losing button */
 }
 
 .modal-top-div {
   display: flex;
-  gap: 90px;
 }
 
 .modal-preview-date {
+  align-self: flex-start;
+  text-align: center;
   display: flex;
   flex-direction: column;
   font-size: 40px;
   color: #c5c5c5;
-  height: inherit;
+  width: 100%;
+  /* height: auto;
+  border: 2px solid yellow; */
 }
 
 .modal-preview-date h3 {
   font-size: 105px;
   color: inherit;
   margin-bottom: 0px;
+}
+
+.modal-preview-date p {
+  color: inherit;
+}
+
+.content-details {
+  margin-top: 3rem;
+  font-size: 1.2rem;
+}
+
+.content-details h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #d6d5d5;
 }

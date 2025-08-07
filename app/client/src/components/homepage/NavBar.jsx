@@ -33,7 +33,7 @@ function NavBar() {
               location.pathname === "/entries" ? "active" : ""
             }`}
           >
-            My Entries
+            Create Entry
           </Link>
           <Link
             to="/calender"

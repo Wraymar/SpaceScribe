@@ -32,7 +32,7 @@ async function uploadImage(req, res) {
       alt_text: req.body.alt_text,
       caption: req.body.caption,
     });
-    res.status(200).json({ imageUrl: media.image_url }); //use media
+    res.status(200).json({ imageUrl: media.cloudinary_url }); // use correct property
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Upload failed" });

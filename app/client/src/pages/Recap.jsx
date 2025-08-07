@@ -74,7 +74,7 @@ export default function WeeklyRecap() {
 
   // Copy entry data to clipboard
   const copyEntryData = async () => {
-    const staticPrompt = `Please analyze the following journal entries and provide insights on patterns, emotions, and personal growth. Focus on recurring themes, mood trends, and areas of progress or challenge. Offer constructive feedback and suggestions for continued personal development.`;
+    const staticPrompt = `Please analyze the following journal entries and provide insights on patterns, emotions, and personal growth. Focus on recurring themes, mood trends, and areas of progress or challenge. Offer constructive feedback and suggestions for continued personal development keep it simple and no more than 500 words.`;
 
     let formattedData = `${staticPrompt}\n\n`;
 
