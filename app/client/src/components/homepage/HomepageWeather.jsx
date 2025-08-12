@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { getTimeOfDay, getWeatherIcon } from "../../utils/timeOfDay";
 import fetchWeather from "../../adapters/fetchWeather";
 
+import moon from "../../assets/icons/quarterMoon.png";
+import sunny from "../../assets/icons/sunny.png";
+
 const HomeWeather = () => {
   const [weather, setWeather] = useState(null);
   const [timeOfDay, setTimeOfDay] = useState(getTimeOfDay());
@@ -42,7 +45,8 @@ const HomeWeather = () => {
 
   const getTemperature = () => {
     if (!weather || !weather.current || !weather.current.temperature)
-      return "--°F";
+      // return "--°F";
+      return "75°F";
 
     return `${Math.ceil(weather.current.temperature)}°F`;
   };
@@ -52,7 +56,7 @@ const HomeWeather = () => {
       <div className="weather-info">
         <span className="weather-icon">{getWeatherIcon(timeOfDay)}</span>
         <div className="weather-details">
-          <h3>{getTemperature()}</h3>
+          <h3>{getTemperature() || "77"}</h3>
           <p>{formatDate(currentDate)}</p>
         </div>
       </div>

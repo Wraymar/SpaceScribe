@@ -18,8 +18,10 @@ export default function WeeklyRecap() {
   useEffect(() => {
     const today = new Date();
     const isTodaySunday = today.getDay() === 0; // 0 = Sunday
+    console.log("checking for sunday", isTodaySunday);
     // const isTodaySunday = true; // 0 = Sunday
-    setIsSunday(isTodaySunday);
+    // setIsSunday(isTodaySunday);
+    setIsSunday(true);
 
     // Calculate current week (previous Sunday to current Saturday)
     const currentDay = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
@@ -74,7 +76,7 @@ export default function WeeklyRecap() {
 
   // Copy entry data to clipboard
   const copyEntryData = async () => {
-    const staticPrompt = `Please analyze the following journal entries and provide insights on patterns, emotions, and personal growth. Focus on recurring themes, mood trends, and areas of progress or challenge. Offer constructive feedback and suggestions for continued personal development keep it simple and no more than 500 words.`;
+    const staticPrompt = `Please analyze the following journal entries and provide insights on patterns, emotions, and personal growth. Focus on recurring themes, mood trends, and areas of progress or challenge. Offer constructive feedback and suggestions for continued personal development keep it simple, casual-like and no more than 500 words.`;
 
     let formattedData = `${staticPrompt}\n\n`;
 

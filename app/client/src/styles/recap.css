@@ -64,20 +64,19 @@
   margin-top: "20px";
 }
 
-.copy-btn {
-  /* background: linear-gradient(135deg, var(--accent-orange), var(--accent-warm)); */
-  color: white;
-  box-shadow: var(--shadow-sm);
-}
-
 .copy-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md), var(--shadow-glow);
 }
 
+.copy-btn {
+  /* background: linear-gradient(135deg, var(--accent-orange), var(--accent-warm)); */
+  color: rgb(5, 5, 5);
+  box-shadow: var(--shadow-sm);
+}
 .save-btn {
   /* background: linear-gradient(135deg, #667eea, #764ba2); */
-  color: white;
+  color: rgb(0, 0, 0);
   box-shadow: var(--shadow-sm);
 }
 
