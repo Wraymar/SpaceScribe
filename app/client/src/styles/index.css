@@ -119,6 +119,7 @@ p {
 /* Glass Effect Cards */
 .glass-card {
   background-color: var(--blue-glass-bg);
+  border-radius: 8px;
   /* -webkit-backdrop-filter: blur();
   backdrop-filter: blur(2px); */
   /* background: rgba(83, 83, 83, 0.283); */

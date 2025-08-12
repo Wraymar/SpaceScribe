@@ -9,6 +9,7 @@ export const getTimeOfDay = () => {
   }
   // Daytime: 8:00 AM - 5:00 PM
   else if (hour >= 8 && hour < 17) {
+    //timeOfDay = "daytime";
     timeOfDay = "sunrise";
   }
   // Sunset: 5:00 PM - 8:00 PM
@@ -17,7 +18,7 @@ export const getTimeOfDay = () => {
   }
   // Night: 8:00 PM - 5:00 AM
   else {
-    timeOfDay = "test";
+    timeOfDay = "night";
   }
   // console.log([timeOfDay, hour]);
   return timeOfDay;
@@ -26,17 +27,18 @@ export const getTimeOfDay = () => {
 export const getBackgroundImage = (timeOfDay) => {
   switch (timeOfDay) {
     case "daytime":
-      return "/src/assets/images/lofiStudy.jpg";
-    case "night":
-      return "/src/assets/images/mtnForest.jpg";
-    case "sunrise":
-    case "sunset":
       return "/src/assets/images/mtn.jpg";
+    case "night":
+      return "/src/assets/images/starrySky.jpg";
+    case "sunrise":
+      return "/src/assets/images/snowyMtn.jpg";
+    case "sunset":
+      return "/src/assets/images/beachSideSunset.jpg";
     case "test":
-      return "/src/assets/images/lofi.jpg";
+      return "/src/assets/images/starrySky.jpg";
     // return "/src/assets/images/editedLofi.png";
     default:
-      return "/src/assets/images/lofiStudy.jpg";
+      return "/src/assets/images/mtn.jpg";
   }
 };
 

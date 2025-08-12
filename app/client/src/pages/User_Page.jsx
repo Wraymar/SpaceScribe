@@ -20,7 +20,7 @@ const userData = {
   journalEntriesThisWeek: 9,
   longest: 3,
   daysSinceLastJournal: 0,
-  mostTrackedMood: "Tired",
+  mostTrackedMood: "Greatful",
   lastMonthData: false,
   // Mood breakdown for chart
   moodBreakdown: [
@@ -38,7 +38,7 @@ export default function UserPage() {
   const [totalEntries, setTotalEntries] = useState(0);
   const navigate = useNavigate();
 
-  console.log(currentUser);
+  // console.log(currentUser);
 
   useEffect(() => {
     const fetchUserData = async () => {

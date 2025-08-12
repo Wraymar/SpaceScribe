@@ -34,7 +34,8 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: grey;
+  /* background: grey; */
+  background: rgba(17, 38, 61, 0.874);
   width: 4rem;
   height: 2rem;
   padding: 4px 8px;
@@ -50,7 +51,7 @@
   width: 100%;
   height: auto;
   /* backdrop-filter: blur(6px); */
-  background: rgba(0, 0, 0, 0.651);
+  background: rgba(17, 38, 61, 0.628);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;

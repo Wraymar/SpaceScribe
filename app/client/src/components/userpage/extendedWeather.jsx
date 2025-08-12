@@ -4,6 +4,8 @@ import fetchWeather from "../../adapters/fetchWeather";
 import "../../styles/extendedWeather.css";
 
 import cloudy from "../../assets/icons/cloudy.png";
+import night from "../../assets/icons/quarterMoon.png";
+import sunny from "../../assets/icons/sunny.png";
 
 const ExtendedWeather = () => {
   const [weather, setWeather] = useState(null);
@@ -101,7 +103,41 @@ const ExtendedWeather = () => {
           </div>
         </>
       ) : (
-        <p>Loading....</p>
+        //static data
+        <>
+          <div className="weather-div-top">
+            {/* LEFT: Icon + Temp + Details */}
+            <div className="top-div-left">
+              <div className="icon-and-temp">
+                <img src={sunny} alt="quarterMoon" className="weather-icon" />
+                <span className="temperature">75</span>
+                {/* <span className="unit">{weather.current_units.temperature}</span> */}
+                {/* <span className="unit-alt">|°C</span> */}
+              </div>
+              <div className="weather-details">
+                <p>Humidity: 92%</p>
+                <p>Wind: 17 mph</p>
+                <span>L: 68 </span>
+                <span>H: 80 </span>
+              </div>
+            </div>
+
+            {/* RIGHT: Weather Title + Time + Condition */}
+            <div className="top-div-right">
+              <h2 className="weather-title">Weather</h2>
+              <p className="weather-time">Thursday Aug 7</p>
+              <p className="weather-condition">Clear Skies</p>
+            </div>
+          </div>
+          <div className="weather-div-bottom">
+            <div className="bottom-div-right">
+              <span> Sunrise:</span>
+              <span> 5:59 am</span>
+              <span> Sunset:</span>
+              <span> 8:03 pm</span>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
