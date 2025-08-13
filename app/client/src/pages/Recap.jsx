@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import NavBar from "../components/homepage/NavBar";
-import EntryCount from "../components/recap/entryCount";
-import StreakCount from "../components/recap/streakCount";
-import WeekReflection from "../components/recap/weekReflection";
+import EntryCount from "../components/recap/EntryCount";
+import StreakCount from "../components/recap/StreakCount";
+import WeekReflection from "../components/recap/WeekReflection";
 import currentUserContext from "../context/current-user-context";
 import "../styles/recap.css";
 

@@ -1,6 +1,6 @@
 import NavBar from "../components/homepage/NavBar";
 import MoodChart from "../components/userpage/MoodChart";
-import ExtendedWeather from "../components/userpage/extendedWeather";
+import ExtendedWeather from "../components/userpage/ExtendedWeather";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import currentUserContext from "../context/current-user-context";
