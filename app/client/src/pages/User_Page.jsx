@@ -86,20 +86,7 @@ export default function UserPage() {
                 Your most tracked mood this week is:{" "}
                 <b>{userData.mostTrackedMood}</b>
               </div>
-              {/* <div>
-                Last Month:{" "}
-                <b>{userData.lastMonthData ? "Data Available" : "No Data"}</b>
-              </div> */}
             </div>
-            {/* <div className="journal-reflect">
-              <div>
-                Journal Entries This Week:{" "}
-                <b>{userData.journalEntriesThisWeek}</b>
-              </div>
-              <div>
-                Days Since Last Journal: <b>{userData.daysSinceLastJournal}</b>
-              </div>
-            </div> */}
           </div>
           {/*  */}
         </div>
