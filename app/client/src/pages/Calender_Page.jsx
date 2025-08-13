@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import NavBar from "../components/homepage/NavBar";
-import Calender from "../components/Calender/calender";
+import Calender from "../components/Calender/Calender";
 import CalendarPreview from "../components/Calender/CalenderPreview";
 import PreviewModal from "../components/Calender/PopUpModal";
 import axios from "axios";
