@@ -12,6 +12,7 @@ import TaskPage from "./pages/Task_Page.jsx";
 import UserPage from "./pages/User_Page.jsx";
 import WeeklyRecap from "./pages/Recap.jsx";
 
+//exporting the app and it's routes to main.jsx
 export default function App() {
   return (
     <DynamicBackground>
