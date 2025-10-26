@@ -23,19 +23,10 @@ function LoginForm({
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span className="eye-icon">👁</span>
+          {/* <span className="eye-icon">👁</span> */}
         </div>
 
-        {/* <div className="form-options">
-          <label className="remember-me">
-            <input type="checkbox" />
-            <span>Remember Me</span>
-          </label>
-          <a href="#" className="forgot-password">
-            Lost your password?
-          </a>
-        </div> */}
-
+        {/* runs only if the handlesubmit fails */}
         {error && <p className="error">{error}</p>}
 
         <button type="submit" className="login-btn">

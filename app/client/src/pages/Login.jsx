@@ -1,5 +1,6 @@
 import "../styles/login.css";
-import axios from "axios";
+// import axios from "axios";
+import axiosInstance from "../utils/axiosConfig";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import currentUserContext from "../context/current-user-context";
@@ -24,13 +25,17 @@ export default function LoginPage() {
       //
       const endpoint = hasAcc ? "/api/login" : "/api/register";
       const data = hasAcc ? { email, password } : { username, email, password };
-      const response = await axios.post(endpoint, data);
+      const response = await axiosInstance.post(endpoint, data);
       const token = response.data.token;
       const currUser = response.data.user;
       //
       console.log("New User logged in: ", response.data);
       setCurrentUser(currUser);
+
+      //“Store a cookie called token with the value from the API, make it accessible on the whole site, and expire it in 24 hours.”
       document.cookie = `token=${token}; path=/; max-age=86400`;
+
+      //then move to the homepage
       navigate("/homepage");
     } catch (err) {
       console.error("Login failed", err);
@@ -49,20 +54,6 @@ export default function LoginPage() {
               Continue your journey of self-reflection and growth with
               SpaceScribe
             </p>
-            {/* <div className="social-icons">
-              <a href="#" className="social-icon">
-                📘
-              </a>
-              <a href="#" className="social-icon">
-                🐦
-              </a>
-              <a href="#" className="social-icon">
-                📷
-              </a>
-              <a href="#" className="social-icon">
-                📺
-              </a>
-            </div> */}
           </div>
         </div>
 

@@ -48,6 +48,7 @@ const login = async (req, res) => {
     const user = await User.findUserByEmail(email);
     //if no user or the password isn't valid
     if (!user || !(await user.isValidPassword(password))) {
+      console.log("no user found");
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
