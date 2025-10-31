@@ -25,6 +25,7 @@ export default function LoginPage() {
       //
       const endpoint = hasAcc ? "/api/login" : "/api/register";
       const data = hasAcc ? { email, password } : { username, email, password };
+      console.log(data);
       const response = await axiosInstance.post(endpoint, data);
       const token = response.data.token;
       const currUser = response.data.user;

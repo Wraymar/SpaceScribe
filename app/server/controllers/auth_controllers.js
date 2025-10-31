@@ -45,7 +45,12 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    console.log("serverside receives", req.body);
+
     const user = await User.findUserByEmail(email);
+
+    console.log("db query finished", user);
     //if no user or the password isn't valid
     if (!user || !(await user.isValidPassword(password))) {
       console.log("no user found");
@@ -65,6 +70,7 @@ const login = async (req, res) => {
       },
     });
   } catch (err) {
+    console.error("❌ Database error:", err);
     res
       .status(500)
       .json({ message: "Server error during login", error: err.message });
