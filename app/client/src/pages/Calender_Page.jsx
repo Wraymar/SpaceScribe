@@ -18,16 +18,6 @@ export default function CalenderPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
-  // const selectedDateStr = selectedDate.toISOString().split("T")[0]; // 'YYYY-MM-DD'
-
-  // //Use Memo helps to not constantly filter unnecessarily
-  // //Since
-  // const entriesForDate = useMemo(() => {
-  //   return entries.filter((entry) =>
-  //     entry.created_at.startsWith(selectedDateStr)
-  //   );
-  // }, [entries, selectedDateStr]);
-
   const selectedDateStr = selectedDate.toLocaleDateString("en-CA"); // 'YYYY-MM-DD' in local time
 
   const entriesForDate = useMemo(() => {

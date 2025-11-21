@@ -12,8 +12,8 @@ db.raw("SELECT current_database(), current_schema();")
 
 module.exports = require("knex")(config);
 
-//THIS IS HOW MODULE SYNTAX WOULD LOOK IN BACKEND
-//TO ENABLE USING IMPORT INSTEAD OF REQUIURE WE WOULD HAVE TO ADD "TYPE: MODULE IN THE PACKAGE.JSON"
+// THIS IS HOW MODULE SYNTAX WOULD LOOK IN BACKEND
+// TO ENABLE USING IMPORT INSTEAD OF REQUIURE WE WOULD HAVE TO ADD "TYPE: MODULE IN THE PACKAGE.JSON"
 // import knex from "knex";
 // import knexConfig from "../knexfile.js";
 
