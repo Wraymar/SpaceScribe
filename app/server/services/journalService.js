@@ -1,4 +1,5 @@
 const knex = require("../db/knex");
+const redis = require("../redis/client");
 const { DateTime } = require("luxon");
 
 /**
@@ -27,6 +28,8 @@ const createJournalEntryWithStreak = async ({
     // 2) Update user streak inside the same transaction
     await updateUserStreakOnNewEntry(trx, user_id, entry.created_at);
 
+    //clear the cache so that the old streak info is removed
+    await redis.del(`streak:${user_id}`);
     //return the entry normally like the we did with the model
     return entry;
   });

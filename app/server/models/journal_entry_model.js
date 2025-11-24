@@ -10,21 +10,21 @@ class JournalEntry {
     this.created_at = created_at;
   }
 
-  static async create({ user_id, title, content, mood, is_shared = false }) {
-    const query = `
-      INSERT INTO journal_entries (user_id, title, content, mood, is_shared)
-      VALUES (?, ?, ?, ?, ?)
-      RETURNING *
-    `;
-    const result = await knex.raw(query, [
-      user_id,
-      title,
-      content,
-      mood,
-      is_shared,
-    ]);
-    return new JournalEntry(result.rows[0]);
-  }
+  // static async create({ user_id, title, content, mood, is_shared = false }) {
+  //   const query = `
+  //     INSERT INTO journal_entries (user_id, title, content, mood, is_shared)
+  //     VALUES (?, ?, ?, ?, ?)
+  //     RETURNING *
+  //   `;
+  //   const result = await knex.raw(query, [
+  //     user_id,
+  //     title,
+  //     content,
+  //     mood,
+  //     is_shared,
+  //   ]);
+  //   return new JournalEntry(result.rows[0]);
+  // }
 
   static async findById(id) {
     const query = `SELECT * FROM journal_entries WHERE id = ?`;

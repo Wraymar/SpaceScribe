@@ -34,11 +34,15 @@ const userData = {
 
 export default function UserPage() {
   const { currentUser, setCurrentUser } = useContext(currentUserContext);
-  const [streakData, setStreakData] = useState({ current: 0, longest: 0 });
+  const [streakData, setStreakData] = useState({
+    current: 0,
+    longest_streak: 0,
+  });
+
   const [totalEntries, setTotalEntries] = useState(0);
   const navigate = useNavigate();
 
-  // console.log(currentUser);
+  console.log(currentUser);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -46,7 +50,8 @@ export default function UserPage() {
         const streakRes = await axios.get("/api/user/getStreak", {
           withCredentials: true,
         });
-        setStreakData(streakRes.data.streak);
+        console.log(streakRes.data);
+        setStreakData(streakRes.data);
 
         const entriesRes = await axios.get("/api/user/entries/count", {
           withCredentials: true,
@@ -104,13 +109,15 @@ export default function UserPage() {
               </div>
             </div>
             <div className="user-stats">
-              {/* <p>Streak Count: {streakData.current} days</p>
-              <p>Longest Streak: {streakData.longest} days</p>
-              <p>Journaling Goal: {currentUser?.goal}</p>
-              <p>Total Entries: {totalEntries}</p> */}
-              <p>Streak Count: {userData.streakCount} days</p>
-              <p>Longest Streak: {userData.longest} days</p>
-              <p>Journaling Goal: {currentUser?.goal}</p>
+              <p>
+                Current Streak: {streakData.current_streak}{" "}
+                {streakData.current_streak > 1 ? "days" : "day"}
+              </p>
+              <p>
+                Longest Streak: {streakData?.longest_streak}{" "}
+                {streakData.current_streak > 1 ? "days" : "day"}
+              </p>
+              <p>Journaling Goal: {streakData?.goal}</p>
               <p>Total Entries: {userData.totalEntries}</p>
             </div>
             <div className="user-controls">

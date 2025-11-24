@@ -35,5 +35,10 @@ services:
     depends_on:
       - server
 
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
 volumes:
   postgres-data:

@@ -9,7 +9,8 @@
     "rollback": "npx knex migrate:rollback",
     "reset": "npx knex migrate:rollback --all && npx knex migrate:latest && npx knex seed:run",
     "migrate": "npx knex migrate:latest",
-    "seed": "npx knex seed:run"
+    "seed": "npx knex seed:run",
+    "startDB": "npx knex migrate:latest && npx knex seed:run"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
+    "ioredis": "^5.8.2",
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "luxon": "^3.7.2",

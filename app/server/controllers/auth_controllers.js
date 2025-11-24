@@ -88,6 +88,9 @@ const findMe = async (req, res) => {
         username: user.username,
         email: user.email,
         goal: user.goal,
+        current_streak: user.current_streak,
+        longest_streak: user.longest_streak,
+        timezone: user.timezone,
       },
     });
   } catch (err) {

@@ -1,10 +1,10 @@
 const JournalEntry = require("../models/journal_entry_model");
-const JournalService = require("../services/journalService");
+const { createJournalEntryWithStreak } = require("../services/journalService");
 
 exports.createJournalEntry = async (req, res) => {
   try {
     const { user_id, title, content, mood, is_shared } = req.body;
-    const newEntry = await JournalService.createJournalEntryWithStreak({
+    const newEntry = await createJournalEntryWithStreak({
       user_id,
       title,
       content,
