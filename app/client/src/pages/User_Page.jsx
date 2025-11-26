@@ -12,7 +12,7 @@ const userData = {
   username: "johndoe",
   email: "johndoe@email.com",
   avatar:
-    "https://media.designrush.com/inspiration_images/797793/conversions/Real-Madrid-desktop.jpg",
+    "https://media.designrush.com/inspiration_images/797793/https://www.google.com/url?sa=i&url=https%3A%2F%2Favatars.alphacoders.com%2Favatars%2Fview%2F104722&psig=AOvVaw3QMClFtF8Tf60o89Sng8Sq&ust=1764080263976000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCICSlqD9ipEDFQAAAAAdAAAAABAE/Real-Madrid-desktop.jpg",
   // avatar: "/src/assets/images/image.png",
   streakCount: 3,
   journalingGoal: "5 days/week",

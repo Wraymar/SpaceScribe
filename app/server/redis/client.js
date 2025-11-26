@@ -13,6 +13,7 @@ if (process.env.REDIS_URL) {
   });
 }
 
+//way of letting us know if the connection was successful or not
 redis.on("connect", () => {
   console.log("Redis connected");
 });

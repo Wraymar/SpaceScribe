@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 //IMPORTS
-//*************************************************************************** */
+//****************************************************************************/
 const upload = require("./middleware/upload");
 const logRoutes = require("./middleware/logRoutes");
 const requireAuth = require("./middleware/requireAuth");
@@ -45,7 +45,7 @@ const {
 const getWeather = require("./services/weather");
 
 //MIDDLEWARE
-//*************************************************************************** */
+//***************************************************************************/
 app.use(express.json());
 app.use(cookieParser());
 app.use(logRoutes);
@@ -54,7 +54,7 @@ app.use(logRoutes);
 //*************************************************************************** */
 
 //upload an image
-//listen for this endpoint    use this middleware    pass to controller
+//listen for this endpoint    use this (multer) middleware    pass to controller
 app.post("/api/media/upload", upload.single("image"), uploadImage);
 
 //get streak (user)
