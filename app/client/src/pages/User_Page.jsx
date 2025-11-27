@@ -117,7 +117,7 @@ export default function UserPage() {
                 Longest Streak: {streakData?.longest_streak}{" "}
                 {streakData.current_streak > 1 ? "days" : "day"}
               </p>
-              <p>Journaling Goal: {streakData?.goal}</p>
+              <p>Journaling Goal: {currentUser?.goal}</p>
               <p>Total Entries: {userData.totalEntries}</p>
             </div>
             <div className="user-controls">

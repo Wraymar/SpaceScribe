@@ -76,7 +76,7 @@ const ExtendedWeather = () => {
                 {/* <span className="unit-alt">|°C</span> */}
               </div>
               <div className="weather-details">
-                <p>Humidity: 92%</p>
+                <p>Humidity: {weather.current.humidity}%</p>
                 <p>
                   Wind: {weather.current.wind_speed}{" "}
                   {weather.current_units.speed}
