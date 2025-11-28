@@ -35,6 +35,9 @@ const {
 //media
 const { uploadImage, getMediaById } = require("./controllers/mediaController");
 
+//calender summary
+const getCalendarSummary = require("./controllers/calender_summary");
+
 //ai insights
 const {
   createAiInsight,
@@ -52,6 +55,8 @@ app.use(logRoutes);
 
 //ROUTES
 //*************************************************************************** */
+//calender
+app.get("/api/calendar/summary", requireAuth, getCalendarSummary);
 
 //upload an image
 //listen for this endpoint    use this (multer) middleware    pass to controller

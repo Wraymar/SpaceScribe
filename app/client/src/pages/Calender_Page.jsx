@@ -8,11 +8,24 @@ import currentUserContext from "../context/current-user-context";
 import "../styles/calender.css";
 
 export default function CalenderPage() {
+  const [summary, setSummary] = useState({});
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [entries, setEntries] = useState([]);
   // const [previewImage, setPreviewImage] = useState(null);
   const [mediaMap, setMediaMap] = useState({});
   const { currentUser } = useContext(currentUserContext);
+
+  //CALENDAR SUMMARY
+  const getSummary = async () => {
+    try {
+      const calendarSummary = await axios.get("/api/calendar/summary");
+      setSummary(calendarSummary.data);
+      console.log(calendarSummary.data);
+    } catch (err) {
+      console.log("failed to get summary");
+    }
+  };
+  //////////////////
 
   //modal
   const [isOpen, setIsOpen] = useState(false);
@@ -45,6 +58,7 @@ export default function CalenderPage() {
   useEffect(() => {
     if (currentUser?.id) {
       fetchEntries();
+      getSummary(); //calendarSummary
     }
   }, [currentUser]);
 
