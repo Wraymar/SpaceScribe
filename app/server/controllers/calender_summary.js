@@ -36,10 +36,22 @@ module.exports = async function getCalendarSummary(req, res) {
       // Add entry info to that date
       summary[dateStr].push({
         id: entry.id,
+        title: entry.title,
         preview_img: media ? media.cloudinary_url : null,
       });
     }
 
+    /*
+    {
+  "2025-01-04": [
+    { "id": 42, "preview_img": "https://cloudinary/abc.jpg" },
+    { "id": 43, "preview_img": null }
+  ],
+  "2025-01-06": [
+    { "id": 55, "preview_img": "https://cloudinary/xyz.jpg" }
+  ]
+}
+*/
     // 4: Save to Redis
     await redis.set(`calendar:summary:${userId}`, JSON.stringify(summary));
 

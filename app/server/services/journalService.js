@@ -62,6 +62,7 @@ async function updateUserStreakOnNewEntry(trx, userId, createdAtUtc) {
     current = 1;
   } else {
     /*
+    .
     i2.diff(i1).toObject() //=> { milliseconds: 43807500000 }
     i2.diff(i1, 'hours').toObject() //=> { hours: 12168.75 }
     i2.diff(i1, ['months', 'days']).toObject() //=> { months: 16, days: 19.03125 }

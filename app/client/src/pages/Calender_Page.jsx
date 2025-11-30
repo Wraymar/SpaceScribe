@@ -10,9 +10,6 @@ import "../styles/calender.css";
 export default function CalenderPage() {
   const [summary, setSummary] = useState({});
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [entries, setEntries] = useState([]);
-  // const [previewImage, setPreviewImage] = useState(null);
-  const [mediaMap, setMediaMap] = useState({});
   const { currentUser } = useContext(currentUserContext);
 
   //CALENDAR SUMMARY
@@ -20,12 +17,10 @@ export default function CalenderPage() {
     try {
       const calendarSummary = await axios.get("/api/calendar/summary");
       setSummary(calendarSummary.data);
-      console.log(calendarSummary.data);
     } catch (err) {
-      console.log("failed to get summary");
+      console.log("failed to get summary", err);
     }
   };
-  //////////////////
 
   //modal
   const [isOpen, setIsOpen] = useState(false);
@@ -33,65 +28,15 @@ export default function CalenderPage() {
 
   const selectedDateStr = selectedDate.toLocaleDateString("en-CA"); // 'YYYY-MM-DD' in local time
 
-  const entriesForDate = useMemo(() => {
-    return entries.filter((entry) => {
-      const entryDateStr = new Date(entry.created_at).toLocaleDateString(
-        "en-CA"
-      );
-      return entryDateStr === selectedDateStr;
-    });
-  }, [entries, selectedDateStr]);
-
-  const fetchEntries = async () => {
-    try {
-      const response = await axios.get(
-        `/api/journal/entries/user/${currentUser.id}`
-      );
-      if (response.data) {
-        setEntries(response.data);
-      }
-    } catch (err) {
-      console.log("failed to fetch entries");
-    }
-  };
-
   useEffect(() => {
     if (currentUser?.id) {
-      fetchEntries();
+      // fetchEntries();
       getSummary(); //calendarSummary
     }
   }, [currentUser]);
 
-  useEffect(() => {
-    const fetchAllMedia = async () => {
-      const map = { ...mediaMap };
-      await Promise.all(
-        entriesForDate.map(async (entry) => {
-          if (map[entry.id] !== undefined) return; // Already fetched or attempted
-          try {
-            const res = await axios.get(`/api/media/entry/${entry.id}`);
-            if (res.data && res.data.cloudinary_url) {
-              map[entry.id] = res.data.cloudinary_url;
-            } else {
-              map[entry.id] = null;
-            }
-          } catch {
-            map[entry.id] = null;
-          }
-        })
-      );
-      setMediaMap(map);
-    };
-
-    if (entriesForDate.length > 0) {
-      fetchAllMedia();
-    }
-  }, [entriesForDate]);
-
   // Guard render AFTER all hooks
   if (!currentUser || !currentUser.id) return null;
-
-  // console.log("selectedEntry", selectedEntry);
 
   return (
     <>
@@ -99,28 +44,23 @@ export default function CalenderPage() {
       <div className="calender-content">
         {/* <div className="calender-controls"> */}
         <div className="polaroid-scroll-container">
-          {entriesForDate.map((entry) => (
+          {summary[selectedDateStr]?.map((entry) => (
             <CalendarPreview
               key={entry.id}
               entry={entry}
-              imageUrl={mediaMap[entry.id] || null}
+              dateStr={selectedDateStr}
               setSelectedEntry={setSelectedEntry}
               setIsOpen={setIsOpen}
             />
           ))}
         </div>
-        {/* </div> */}
         <div className="calendar-container">
-          {/* <Calender onDateSelect={setSelectedDate} /> */}
           <Calender
             onDateSelect={setSelectedDate}
+            //react calendar automatically give the date of each tile, callback params have access
             tileClassName={({ date }) => {
               const dateStr = date.toISOString().split("T")[0];
-              return entries.some((entry) =>
-                entry.created_at.startsWith(dateStr)
-              )
-                ? "has-entry"
-                : "";
+              return summary[dateStr] ? "has-entry" : "";
             }}
           />
         </div>
@@ -130,7 +70,7 @@ export default function CalenderPage() {
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           selectedEntry={selectedEntry}
-          imageUrl={mediaMap[selectedEntry.id] || null}
+          imageUrl={selectedEntry.preview_img || null}
         />
       )}
     </>
